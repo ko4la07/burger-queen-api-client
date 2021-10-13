@@ -9,6 +9,7 @@ import {
 import Products from './Products.jsx';
 import Orders from './Orders.jsx';
 import Users from './Users.jsx';
+import Logout from './Logout.jsx';
 
 const AsidePersonal = () => {
   let { url } = useRouteMatch();
@@ -24,10 +25,8 @@ const AsidePersonal = () => {
         <li>
           <Link to={`${url}/products`}>Productos</Link>
         </li>
-        <li>
-          <Link to={`${url}/logout`}>Salir</Link>
-        </li>
       </ul>
+      <Logout/>
       <Switch>
         <Route path={`${url}/orders`}>
           <Orders />
@@ -37,8 +36,6 @@ const AsidePersonal = () => {
         </Route>
         <Route path={`${url}/products`}>
           <Products/>
-        </Route>
-        <Route path={`${url}/logout`}>
         </Route>
       </Switch>
     </aside>

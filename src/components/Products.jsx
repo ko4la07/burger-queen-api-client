@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Product from './Product'
 
 const Products = () => {
   function getToken() {
@@ -6,22 +7,35 @@ const Products = () => {
     return token;
   };
   const token = getToken();
+  
+  const [product, setProduct] = useState([]);
+  
+  const urlProducts = 'https://lim015-burger-queen-api.herokuapp.com/products';
 
-  let response = fetch('https://lim015-burger-queen-api.herokuapp.com/products', {
+  const fetchProducts = (url) => {
+    fetch(url, {
       method :'GET',
       headers : {
         'Accept': 'application/json',
         "Authorization" : `Bearer ${token}`,
       },
-      });
-      response
-        .then((response) => response.json())
-        .then((data) => console.log(data));
-      
+      })
+      .then((response) => response.json())
+      .then((data) => setProduct(data))
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    // setProduct(true);
+    fetchProducts(urlProducts);
+    return () => setProduct(false);
+  },[])
+  
   return (
     <div>
       <h1 className="mensajeJ">Aquí van los productos!!!</h1>
-      <h2 className="mensajeJ">Aquí van los productos!!!</h2>
+      <div></div>
+      <Product product = {product} />
     </div>
   )
 }

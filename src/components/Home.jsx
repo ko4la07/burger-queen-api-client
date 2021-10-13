@@ -1,6 +1,5 @@
 import React from 'react';
 import Auth from './Auth';
-// import MensajeReutilizableDayana from './MensajeReutilizableDayana';
 import AsidePersonal from './AsidePersonal';
 
 const Home = () => {
@@ -12,7 +11,7 @@ const Home = () => {
   return getToken()?(
     <div>
       <AsidePersonal />
-      <h1>Dayana!</h1>
+      <h1>Dayana y Ani!</h1>
     </div>
   ):(<Auth />)
 };
