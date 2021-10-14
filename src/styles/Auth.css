@@ -66,6 +66,9 @@
   text-align: center;
   margin: 0px 0px 10px;
 }
+.message-error-auth {
+  --toastify-color-progress-light: #E09823;
+}
 
 /* ------- MEDIA SCREENS ------ */
 @media screen and (max-width:370px) {

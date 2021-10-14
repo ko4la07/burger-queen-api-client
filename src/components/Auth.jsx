@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import '../styles/Auth.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Auth = () => {
   const [email, setEmail] = useState();
@@ -12,6 +14,16 @@ const Auth = () => {
        history.push('/home/orders');
      } 
    });
+   // funcion notificaciones de error en el auth
+   const notify = (message) => toast.error(message, {
+    position: "bottom-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    });
 
   const login = async () => {
     const credentials = { email, password };
@@ -28,7 +40,7 @@ const Auth = () => {
 
       // Acceso a la pagina, validando token de auth
       if (!response.token) {
-        console.log(response.message);
+        notify(response.message);
       } else {
         localStorage.setItem('token', JSON.stringify(response));
         history.push('/home/orders');
@@ -57,6 +69,9 @@ const Auth = () => {
           </div>
           <div>
           <button type = 'submit' onClick = {login}>Ingresar</button>
+          </div>
+          <div className = 'message-error-auth'>
+          <ToastContainer toastStyle={{ backgroundColor: 'rgba(45, 45, 48, 1)', padding: '15px', fontSize: '16px', color: 'white',}} />
           </div>
         </div>
       </div>
