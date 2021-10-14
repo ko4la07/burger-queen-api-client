@@ -8,6 +8,7 @@ import { useEffect} from 'react';
 import Auth from './components/Auth';
 
 import Home from './components/Home';
+import Principal from './components/Principal';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Auth}/>
         <Route path="/home" component={Home}/>
+        <Route path = '/principal' component = {Principal}/>
       </Switch>
     </Router>
   )
