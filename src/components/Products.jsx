@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Product from './Product'
+import '../styles/Products.css';
 
 const Products = () => {
   function getToken() {
@@ -28,14 +29,15 @@ const Products = () => {
   useEffect(() => {
     // setProduct(true);
     fetchProducts(urlProducts);
-    return () => setProduct(false);
+    // return () => setProduct(false);
   },[])
   
   return (
-    <div>
+    <div className = 'container-products'>
       <h1 className="mensajeJ">Aquí van los productos!!!</h1>
-      <div></div>
+      <div>
       <Product product = {product} />
+      </div>
     </div>
   )
 }

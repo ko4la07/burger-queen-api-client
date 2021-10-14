@@ -1,6 +1,7 @@
 import React from 'react';
 import Auth from './Auth';
-import AsidePersonal from './AsidePersonal';
+import MenuViews from './MenuViews';
+import '../styles/Home.css';
 
 const Home = () => {
   function getToken() {
@@ -9,9 +10,8 @@ const Home = () => {
     return tokenString;
   };
   return getToken()?(
-    <div>
-      <AsidePersonal />
-      <h1>Dayana y Ani!</h1>
+    <div className = 'container-home'>
+      <MenuViews />
     </div>
   ):(<Auth />)
 };

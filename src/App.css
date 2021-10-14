@@ -3,7 +3,9 @@
   padding:0;
   box-sizing: border-box;
 }
-
+body {
+  background-color: rgba(45, 45, 48, 1);
+}
 .msgContainer{
   width: 80vw;
   margin: 0 auto;

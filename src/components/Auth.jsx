@@ -9,7 +9,7 @@ const Auth = () => {
 
    useEffect(() => {
     if(localStorage.getItem('token')) {
-       history.push('/home');
+       history.push('/home/orders');
      } 
    });
 
@@ -31,7 +31,7 @@ const Auth = () => {
         console.log(response.message);
       } else {
         localStorage.setItem('token', JSON.stringify(response));
-        history.push('/home');
+        history.push('/home/orders');
       }
   };
 

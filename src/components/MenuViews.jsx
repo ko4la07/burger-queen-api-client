@@ -10,12 +10,14 @@ import Products from './Products.jsx';
 import Orders from './Orders.jsx';
 import Users from './Users.jsx';
 import Logout from './Logout.jsx';
+import '../styles/MenuViews.css';
 
-const AsidePersonal = () => {
+const MenuViews = () => {
   let { url } = useRouteMatch();
   return (
-    <aside>
-      <ul>
+    <div className = 'views-menu'>
+      <div className = 'logo-aside'></div>
+      <div className = 'personal-menu'>
         <li>
           <Link to={`${url}/orders`}>Todas las ordenes</Link>
         </li>
@@ -25,21 +27,25 @@ const AsidePersonal = () => {
         <li>
           <Link to={`${url}/products`}>Productos</Link>
         </li>
-      </ul>
-      <Logout/>
+        <div className = 'logout-menu'>
+        <Logout/>
+        </div>
+      </div>
+      <div className = 'line-menu'></div>
+      <div className = 'line-mobile-menu'></div>
       <Switch>
         <Route path={`${url}/orders`}>
-          <Orders />
+          <div><Orders /></div>
         </Route>
         <Route path={`${url}/users`}>
-          <Users />
+          <div><Users /></div>
         </Route>
         <Route path={`${url}/products`}>
-          <Products/>
+          <div className = 'redirect-product'><Products/></div>
         </Route>
       </Switch>
-    </aside>
+    </div>
   )
 }
 
-export default AsidePersonal;
+export default MenuViews;
