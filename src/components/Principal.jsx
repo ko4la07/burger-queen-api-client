@@ -1,6 +1,8 @@
 import React from "react";
 import Auth from "./Auth";
 import MenuCar from "./MenuCar";
+import ProductsCart from "./ProductsCart";
+import '../styles/Principal.css';
 
 const Principal = () => {
 
@@ -9,11 +11,17 @@ const Principal = () => {
     return tokenString;
   };
   return getToken()?(
-    <div>
-      <div>
+    <div className = 'container-principal'>
+      <div className = 'image-products-cart'>
+        <div className = 'logo-products-cart'></div>
+      </div>
+      <div className = 'line-products-cart'></div>
+      <div className = 'menu-car-cart'>
         <MenuCar />
       </div>
-      <h1>Principal</h1>
+      <div className = 'products-cart-principal'>
+        <ProductsCart />
+      </div>
     </div>
   ):(<Auth />)
 }

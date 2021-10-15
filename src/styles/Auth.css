@@ -2,7 +2,7 @@
   display: grid;
   grid-template-rows: 1.2fr 1fr;
   height: 100vh;
-  background-image: url('../assets/img/burger-header.png');
+  background-image: url('../assets/img/burger-login.png');
   background-size: cover;
   background-position: center;
   padding: 50px;

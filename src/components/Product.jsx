@@ -2,6 +2,7 @@ import React from 'react';
 
 const Product = ({product}) => {
   return (
+    // debemos de hacer aqui la tabla con los valores
     <div>
       {
           product.map((item, index) => (

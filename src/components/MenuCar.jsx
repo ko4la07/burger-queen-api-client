@@ -5,8 +5,8 @@ const MenuCar = () => {
   let { url } = useRouteMatch();
 
   return (
-    <div>
-      <div className = 'personal-menu'>
+    <div className = 'container-menu-car'>
+      <div>
         <li>
           <Link to={`/home/orders`}>Mi area personal</Link>
         </li>
