@@ -30,11 +30,14 @@ const Products = () => {
     // setProduct(true);
     fetchProducts(urlProducts);
     // return () => setProduct(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   
   return (
     <div className = 'container-products'>
-      <h1 className="mensajeJ">Aquí van los productos!!!</h1>
+      <div>
+      <button>Crear nuevo producto</button>
+      </div>
       <div>
       <Product product = {product} />
       </div>

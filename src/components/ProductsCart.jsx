@@ -30,6 +30,7 @@ const ProductsCart = () => {
     // setProduct(true);
     fetchProducts(urlProducts);
     // return () => setProduct(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   
   return (
