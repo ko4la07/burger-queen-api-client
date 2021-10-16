@@ -6,7 +6,7 @@ import '../styles/Home.css';
 const Home = () => {
   function getToken() {
     const tokenString = localStorage.getItem('token');
-    console.log(tokenString);
+    // console.log(tokenString); // token
     return tokenString;
   };
   return getToken()?(

@@ -11,3 +11,43 @@
   width: 200px;
   height: 150px;
 }
+.container-products {
+  display: flex;
+  flex-direction: column;
+}
+.btn-new-product {
+  display: flex;
+  justify-content: center;
+}
+.btn-new-product button {
+  padding: 8px 50px;
+  color: white;
+  background-color: rgba(224, 152, 35, 1);
+  border: none;
+  border-radius: 10px;
+}
+.header-table-products {
+  color: rgba(224, 152, 35, 1);
+  font-weight: 400;
+}
+.elements-table-products {
+  font-weight: 100;
+  font-size: 18px;
+  text-align: center;
+  /* color: blue; */
+}
+.row-table-products{
+  line-height: 26px;
+}
+table {
+  line-height: 32px;
+  border-collapse: separate;
+  border-spacing: 10px 5px;
+}
+.modal-new-product {
+  line-height: 35px;
+}
+.modal-new-product h2 {
+  color: rgba(224, 152, 35, 1);
+  font-weight: 300;
+}

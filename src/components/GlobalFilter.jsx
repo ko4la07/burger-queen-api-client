@@ -1,5 +1,6 @@
 import { React, useState } from "react";
 import { useAsyncDebounce } from "react-table";
+import '../styles/GlobalFilter.css';
  
 // Component for Global Filter
 const GlobalFilter = ({ 
@@ -13,19 +14,22 @@ const GlobalFilter = ({
  }, 200);
  
  return (
-   <div>
+   <div className = 'filter-global'>
      <input
        value={value || ""}
        onChange={(e) => {
          setValue(e.target.value);
          onChange(e.target.value);
        }}
-       placeholder=" Buscar"
-       className="w-25"
+       placeholder="Buscar"
+       className="input-global-filter"
        style={{
-         fontSize: "1.1rem",
-         margin: "15px",
-         display: "inline",
+         fontSize: "1rem",
+         margin: "20px 0px",
+         display: "flex",
+         padding: "10px",
+         color:'white',
+         outline:'none',
        }}
      />
    </div>

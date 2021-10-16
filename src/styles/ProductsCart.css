@@ -1,5 +1,6 @@
 .products-cart-box {
   display: flex;
+  flex-wrap: wrap;
 }
 .one-product-cart-box {
   display: flex;
@@ -19,6 +20,13 @@
   margin-top: -45px;
   border-radius: 20px;
 }
+.name-product-cart {
+  font-weight: 500;
+}
+.price-product-cart {
+  font-weight: 300;
+  margin: 3px 0px;
+}
 .button-product-cart {
   background-color: rgba(224, 152, 35, 1);
   border: none;
@@ -26,5 +34,4 @@
   font-weight: bold;
   color: white;
   border-radius: 5px;
-  margin-top: 5px;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { useTable, useGlobalFilter} from "react-table";
 import GlobalFilter from './GlobalFilter';
 
-const Product = ({product}) => {
+const ProductTable = ({product}) => {
   const dataProducts = (prod) => {
     const arrayProducts = prod.map((element) => {
       const result ={
@@ -80,11 +80,11 @@ const Product = ({product}) => {
               setGlobalFilter={setGlobalFilter}
              />
            </th>
-         </tr>
+      </tr>
        {// Loop over the header rows
        headerGroups.map(headerGroup => (
          // Apply the header row props
-         <tr {...headerGroup.getHeaderGroupProps()}>
+         <tr {...headerGroup.getHeaderGroupProps()} className = 'header-table-products'>
            {// Loop over the headers in each row
            headerGroup.headers.map(column => (
              // Apply the header cell props
@@ -97,7 +97,7 @@ const Product = ({product}) => {
        ))}
      </thead>
      {/* Apply the table body props */}
-     <tbody {...getTableBodyProps()}>
+     <tbody {...getTableBodyProps()} className = 'elements-table-products'>
        {// Loop over the table rows
        rows.map(row => {
          // Prepare the row for display
@@ -123,4 +123,4 @@ const Product = ({product}) => {
   )
 };
 
-export default Product;
+export default ProductTable;

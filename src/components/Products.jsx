@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Product from './Product'
+import ProductTable from './ProductTable'
 import '../styles/Products.css';
+import CreateProduct from "./CreateProduct";
 
 const Products = () => {
   function getToken() {
@@ -28,18 +29,19 @@ const Products = () => {
 
   useEffect(() => {
     // setProduct(true);
-    fetchProducts(urlProducts);
+    // setInterval(() => {
+      fetchProducts(urlProducts);
+    // }, 1000);
+    // fetchProducts(urlProducts);
     // return () => setProduct(false);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   
   return (
     <div className = 'container-products'>
+      <CreateProduct />
       <div>
-      <button>Crear nuevo producto</button>
-      </div>
-      <div>
-      <Product product = {product} />
+      <ProductTable product = {product} />
       </div>
     </div>
   )

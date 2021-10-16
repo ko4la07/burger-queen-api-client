@@ -29,7 +29,7 @@ const ProductsCart = () => {
   useEffect(() => {
     // setProduct(true);
     fetchProducts(urlProducts);
-    // return () => setProduct(false);
+    return () => setProduct(false); // cancela el estado
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   

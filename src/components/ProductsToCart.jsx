@@ -9,9 +9,9 @@ const ProductToCard = ({product}) => {
               <div>
                 <img src={item.image} alt="burger" className = 'img-products-cart'/>
               </div>
-              <div>{item.name}</div>
+              <div className = 'name-product-cart'>{item.name}</div>
               {/* <div>{item._id}</div> */}
-              <div>S/.{item.price}</div>
+              <div className = 'price-product-cart'>S/.{item.price}</div>
               <button id={item._id} className = 'button-product-cart'>Agregar</button>
             </div>
           ))
