@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "./Modal";
 import { useModal } from "../hooks/useModal";
 
-const CreateProduct = () => {
+const CreateProduct = ({fetchProducts}) => {
   function getToken() {
     const token = JSON.parse(localStorage.getItem('token'))['token'];
     return token;
@@ -16,7 +16,7 @@ const CreateProduct = () => {
   
   const urlProducts = 'https://lim015-burger-queen-api.herokuapp.com/products';
 
-  const fetchProducts = () => {
+  const postProducts = async () => {
     const credentials = { name, type, price, image };
     console.log(credentials);
     fetch(urlProducts, {
@@ -30,11 +30,12 @@ const CreateProduct = () => {
       })
       .then(response => response.json())
       .then((data) => console.log(data))
+      .then(() => fetchProducts(urlProducts))
       .catch((error) => console.log(error));
   };
 
   const closeM = () => {
-    fetchProducts();
+    postProducts();
     closeModalNewProduct();
   };
 

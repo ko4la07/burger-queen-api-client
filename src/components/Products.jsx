@@ -14,32 +14,27 @@ const Products = () => {
   
   const urlProducts = 'https://lim015-burger-queen-api.herokuapp.com/products';
 
-  const fetchProducts = (url) => {
-    fetch(url, {
+  const fetchProducts = async (url) => {
+    setProduct( await fetch(url, {
       method :'GET',
       headers : {
         'Accept': 'application/json',
         "Authorization" : `Bearer ${token}`,
       },
-      })
+    })
       .then((response) => response.json())
-      .then((data) => setProduct(data))
-      .catch((error) => console.log(error));
-  };
+      .then((data) => data)
+      .catch((error) => console.log(error))
+    )};
 
   useEffect(() => {
-    // setProduct(true);
-    // setInterval(() => {
       fetchProducts(urlProducts);
-    // }, 1000);
-    // fetchProducts(urlProducts);
-    // return () => setProduct(false);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   
   return (
     <div className = 'container-products'>
-      <CreateProduct />
+      <CreateProduct fetchProducts = {fetchProducts} />
       <div>
       <ProductTable product = {product} />
       </div>
