@@ -3,7 +3,7 @@ import Modal from "./Modal";
 import { useModal } from "../hooks/useModal";
 import { MdModeEdit } from "react-icons/md";
 
-const UpdateProduct = ({dataProduct}) => {
+const UpdateProduct = ({dataProduct,fetchProducts}) => {
   
   function getToken() {
     const token = JSON.parse(localStorage.getItem('token'))['token'];
@@ -16,12 +16,13 @@ const UpdateProduct = ({dataProduct}) => {
   const [price, setPrice] = useState(dataProduct.price);
   const [image, setImage] = useState(dataProduct.image);
   
-  const urlProducts = `https://lim015-burger-queen-api.herokuapp.com/products/${dataProduct._id}`;
+  const urlProducts = 'https://lim015-burger-queen-api.herokuapp.com/products';
+  const urlProductsId = `https://lim015-burger-queen-api.herokuapp.com/products/${dataProduct._id}`;
 
   const updateProducts = async () => {
     const credentials = { name, type, price, image };
     console.log(credentials);
-    fetch(urlProducts, {
+    fetch(urlProductsId, {
       method :'PUT',
       headers : {
         'Content-Type': 'application/json',
@@ -31,8 +32,8 @@ const UpdateProduct = ({dataProduct}) => {
       body: JSON.stringify(credentials)
       })
       .then(response => response.json())
-      .then((data) => console.log(data))
-      // .then(() => fetchProducts(urlProducts))
+      // .then((data) => console.log(data))
+      .then(() => fetchProducts(urlProducts))
       .catch((error) => console.log(error));
   };
   
@@ -65,7 +66,7 @@ const UpdateProduct = ({dataProduct}) => {
           <label htmlFor="image">Imagen</label>
           <input type="text" name = 'image' onChange = {(e) => setImage(e.target.value)} value = {image}/>
         </div>
-        <button type = 'submit' onClick = {updateAndClose} className = 'btn-create-product'>Enviar y actualizar</button>
+        <button type = 'submit' onClick = {updateAndClose} className = 'btn-update-product'>Enviar y actualizar</button>
       </Modal>
       </div>
     </>

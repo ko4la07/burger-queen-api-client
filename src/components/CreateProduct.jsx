@@ -30,7 +30,7 @@ const CreateProduct = ({fetchProducts}) => {
       body: JSON.stringify(credentials)
       })
       .then(response => response.json())
-      .then((data) => console.log(data))
+      // .then((data) => console.log(data))
       .then(() => fetchProducts(urlProducts))
       .catch((error) => console.log(error));
   };

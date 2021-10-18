@@ -38,7 +38,7 @@ const Products = () => {
       <CreateProduct fetchProducts = {fetchProducts} />
       {/* <UpdateProduct/> */}
       <div>
-      <ProductTable product = {product} />
+      <ProductTable product = {product} fetchProducts = {fetchProducts}/>
       </div>
     </div>
   )

@@ -1,10 +1,10 @@
 import React from 'react';
 import { useTable, useGlobalFilter} from "react-table";
 import GlobalFilter from './GlobalFilter';
-import { MdOutlineDeleteOutline } from "react-icons/md";
 import UpdateProduct from './UpdateProduct';
+import DeleteProduct from './DeleteProduct';
 
-const ProductTable = ({product}) => {
+const ProductTable = ({product,fetchProducts}) => {
   const dataProducts = (prod) => {
     const arrayProducts = prod.map((element) => {
       const result ={
@@ -12,8 +12,8 @@ const ProductTable = ({product}) => {
         col2: element.type,
         col3: element.image ? 'si' : 'no',
         col4: element.price,
-        col5: <UpdateProduct dataProduct = {element}/>,
-        col6: <button id = {element._id} onClick = {(e)=>console.log('delete', element._id)} className = 'btn-delete-table'><MdOutlineDeleteOutline /></button>,
+        col5: <UpdateProduct dataProduct = {element} fetchProducts={fetchProducts}/>,
+        col6: <DeleteProduct dataProduct = {element} fetchProducts={fetchProducts}/>,
       }
       return result;
     });
@@ -24,6 +24,7 @@ const ProductTable = ({product}) => {
   const data = React.useMemo(
     () => 
     dataProducts(product),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [product]
   );
 

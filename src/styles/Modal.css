@@ -57,12 +57,10 @@
 CREATE PRODUCT
 */
 
-.btn-create-product{
+.btn-create-product, .btn-update-product, .btn-delete-product {
   display: flex;
   justify-content: center;
-  margin-top: 15px;
-}
-.btn-create-product {
+  /* margin-top: 15px; */
   background-color: rgba(224, 152, 35, 1);
   border: none;
   padding: 5px 50px;
