@@ -20,11 +20,17 @@
   justify-content: center;
 }
 .btn-new-product button {
+  display: flex;
   padding: 8px 50px;
   color: white;
   background-color: rgba(224, 152, 35, 1);
   border: none;
   border-radius: 10px;
+}
+.btn-new-product button svg {
+  margin: 0px 5px;
+  height: 16px;
+  width: 16px;
 }
 .header-table-products {
   color: rgba(224, 152, 35, 1);
@@ -44,10 +50,13 @@ table {
   border-collapse: separate;
   border-spacing: 10px 5px;
 }
-.modal-new-product {
-  line-height: 35px;
+.btn-update-table, .btn-delete-table {
+  color: white;
+  border: none;
+  background-color: transparent;
 }
-.modal-new-product h2 {
-  color: rgba(224, 152, 35, 1);
-  font-weight: 300;
+.btn-update-table svg, .btn-delete-table svg {
+  height: 20px;
+  width: 20px;
+  margin: 0px 7px;
 }

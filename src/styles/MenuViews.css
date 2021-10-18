@@ -33,6 +33,9 @@
   /* border: 2px solid green; */
   margin: 30px;
 }
+.logout-menu {
+  display: flex;
+}
 .logout-menu button {
   background: none;
   color: inherit;
@@ -45,6 +48,11 @@
 .logout-menu button:hover {
   color: rgba(224, 152, 35, 1);
 }
+.logout-menu svg{
+  position: relative;
+  bottom: -2px;
+}
+
 
 /* ------- MEDIA SCREENS ------ */
 @media screen and (min-width:600px) {

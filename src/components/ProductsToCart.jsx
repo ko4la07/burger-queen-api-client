@@ -1,4 +1,5 @@
 import React from 'react';
+import { MdAddCircleOutline } from "react-icons/md";
 
 const ProductToCard = ({product}) => {
   return (
@@ -12,7 +13,7 @@ const ProductToCard = ({product}) => {
               <div className = 'name-product-cart'>{item.name}</div>
               {/* <div>{item._id}</div> */}
               <div className = 'price-product-cart'>S/.{item.price}</div>
-              <button id={item._id} className = 'button-product-cart'>Agregar</button>
+              <button id={item._id} className = 'button-product-cart'>Agregar <MdAddCircleOutline/></button>
             </div>
           ))
         }

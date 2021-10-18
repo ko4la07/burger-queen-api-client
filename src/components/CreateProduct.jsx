@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 import { useModal } from "../hooks/useModal";
+import { MdAddCircleOutline } from "react-icons/md";
 
 const CreateProduct = ({fetchProducts}) => {
   function getToken() {
@@ -34,7 +35,7 @@ const CreateProduct = ({fetchProducts}) => {
       .catch((error) => console.log(error));
   };
 
-  const closeM = () => {
+  const postAndClose = () => {
     postProducts();
     closeModalNewProduct();
   };
@@ -44,7 +45,7 @@ const CreateProduct = ({fetchProducts}) => {
   return (
     <>
       <div className = 'btn-new-product'>
-      <button onClick ={openModalNewProduct}>Crear nuevo producto</button>
+      <button onClick ={openModalNewProduct}><MdAddCircleOutline/> Crear nuevo producto</button>
       </div>
       <div className = 'modal-new-product'>
       <Modal isOpen = {isOpenNewProduct} closeModal = {closeModalNewProduct}>
@@ -65,9 +66,7 @@ const CreateProduct = ({fetchProducts}) => {
           <label htmlFor="image">Imagen</label>
           <input type="text" name = 'image' onChange = {(e) => setImage(e.target.value)}/>
         </div>
-        <div>
-          <button type = 'submit' onClick = {closeM}>Crear producto</button>
-        </div>
+        <button type = 'submit' onClick = {postAndClose} className = 'btn-create-product'>Crear producto</button>
       </Modal>
       </div>
     </>
