@@ -1,7 +1,8 @@
 import React from 'react';
 import { useTable, useGlobalFilter} from "react-table";
 import GlobalFilter from './GlobalFilter';
-import { MdModeEdit, MdOutlineDeleteOutline } from "react-icons/md";
+import { MdOutlineDeleteOutline } from "react-icons/md";
+import UpdateProduct from './UpdateProduct';
 
 const ProductTable = ({product}) => {
   const dataProducts = (prod) => {
@@ -11,7 +12,7 @@ const ProductTable = ({product}) => {
         col2: element.type,
         col3: element.image ? 'si' : 'no',
         col4: element.price,
-        col5: <button id = {element._id} onClick = {(e)=>console.log('update', element._id)} className = 'btn-update-table'><MdModeEdit /> </button>,
+        col5: <UpdateProduct dataProduct = {element}/>,
         col6: <button id = {element._id} onClick = {(e)=>console.log('delete', element._id)} className = 'btn-delete-table'><MdOutlineDeleteOutline /></button>,
       }
       return result;

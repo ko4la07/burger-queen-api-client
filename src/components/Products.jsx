@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProductTable from './ProductTable'
 import '../styles/Products.css';
 import CreateProduct from "./CreateProduct";
+// import UpdateProduct from "./UpdateProduct";
 
 const Products = () => {
   function getToken() {
@@ -35,6 +36,7 @@ const Products = () => {
   return (
     <div className = 'container-products'>
       <CreateProduct fetchProducts = {fetchProducts} />
+      {/* <UpdateProduct/> */}
       <div>
       <ProductTable product = {product} />
       </div>
