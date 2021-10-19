@@ -1,0 +1,35 @@
+.one-order-box {
+  display: flex;
+  flex-direction: column;
+  line-height: 30px;
+  align-items: center;
+  margin: 40px 10px 10px;
+  background-color: rgba(76, 76, 81, 1);
+  border-radius: 10px;
+  width: 210px;
+  height: 180px;
+  padding: 0px 25px 15px;
+  position: relative;
+  justify-content: center;
+  font-weight: 300;
+}
+.button-order-box {
+  display: flex;
+  background-color: rgba(224, 152, 35, 1);
+  border: none;
+  padding: 5px 30px;
+  font-weight: bold;
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 13px;
+  justify-content: center;
+}
+.one-order-rows {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  width: 100%;
+}
+.rows-name {
+  color: rgba(224, 152, 35, 1);
+}

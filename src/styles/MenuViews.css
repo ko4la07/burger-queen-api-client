@@ -68,6 +68,9 @@
   display: flex;
   justify-content: flex-end;
 }
+.container-header-menu-views a:hover {
+  color: rgba(224, 152, 35, 1);
+}
 .container-header-menu-views svg {
   margin-right: 5px;
   margin-top: 2px;
