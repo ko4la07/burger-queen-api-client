@@ -6,7 +6,7 @@ const ReturnButton = () => {
 return (
   <div className = 'container-header-menu-views'>
     <h2>Mi área personal</h2>
-    <Link to={'/principal'}><MdKeyboardBackspace/>Inicio</Link>
+    <Link to={'/principal/promo'}><MdKeyboardBackspace/>Inicio</Link>
   </div>
 )
 };

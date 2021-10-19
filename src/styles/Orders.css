@@ -33,3 +33,16 @@
 .rows-name {
   color: rgba(224, 152, 35, 1);
 }
+.button-order-look {
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(224, 152, 35, 1);
+  border: none;
+  padding: 5px 20px;
+  font-weight: bold;
+  color: white;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 13px;
+  right: 15px;
+}

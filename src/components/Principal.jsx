@@ -1,8 +1,9 @@
 import React from "react";
 import Auth from "./Auth";
 import MenuCar from "./MenuCar";
-import ProductsCart from "./ProductsCart";
+// import ProductsCart from "./ProductsCart";
 import '../styles/Principal.css';
+import MenuPrincipal from "./MenuPrincipal";
 
 const Principal = () => {
 
@@ -19,9 +20,10 @@ const Principal = () => {
       <div className = 'menu-car-cart'>
         <MenuCar />
       </div>
-      <div className = 'products-cart-principal'>
+      <MenuPrincipal/>
+      {/* <div className = 'products-cart-principal'>
         <ProductsCart />
-      </div>
+      </div> */}
     </div>
   ):(<Auth />)
 }

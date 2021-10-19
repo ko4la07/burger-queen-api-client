@@ -56,7 +56,7 @@
   /* display: flex; */
   display: grid;
   grid-template-columns: 3.5fr 1.5fr;
-  margin: 10px 0px 20px;
+  margin: 10px 30px 20px 0px;
 }
 .container-header-menu-views h2 {
   font-weight: 300;

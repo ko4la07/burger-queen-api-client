@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import '../styles/ProductsCart.css';
 import ProductToCard from "./ProductsToCart";
 
-const ProductsCart = () => {
+const ProductsCart = ({type}) => {
   function getToken() {
     const token = JSON.parse(localStorage.getItem('token'))['token'];
     return token;
@@ -32,13 +32,23 @@ const ProductsCart = () => {
     return () => setProduct(false); // cancela el estado
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
-  
+
+  const dataTypes = (entrada) => {
+    let arrayResult = [];
+    product.forEach((element) => {
+      if(element.type === entrada) {
+        arrayResult.push(element);
+      }
+    })
+    return arrayResult;
+  };
+  // console.log(dataTypes('promo'));
+
   return (
     <div className = 'container-products-cart'>
       <div>
-      <h1>Clasicas</h1>
       <div>
-        <ProductToCard product = {product} />
+        <ProductToCard product = {dataTypes(type)} />
       </div>
       </div>
     </div>

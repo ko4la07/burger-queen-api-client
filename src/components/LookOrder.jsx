@@ -36,7 +36,7 @@ const LookOrder = ({idOrder}) => {
 
   return (
     <div className = ''>
-      <button id={order._id} className = 'button-order-box' onClick = {openModalLookOrder}>Ver orden</button>
+      <button id={order._id} className = 'button-order-look' onClick = {openModalLookOrder}>Ver orden</button>
       <Modal isOpen = {isOpenLookOrder} closeModal = {closeModalLookOrder}>
         <h2>Resumen de la orden</h2>
         <div>
@@ -53,16 +53,16 @@ const LookOrder = ({idOrder}) => {
         </div>
         <div>
           <p>Orden</p>
-          {
+          {/* {
             order.products.map((product) => {
               return(
                 <div>
-                  {/* <div>{product.qty}</div>
-                  <div>{product._id}</div> */}
+                  <div>{product.qty}</div>
+                  <div>{product._id}</div>
                 </div>
               )
             })
-          }
+          } */}
         </div>
         <div>
           <p>Total</p>

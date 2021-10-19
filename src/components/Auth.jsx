@@ -11,7 +11,7 @@ const Auth = () => {
 
    useEffect(() => {
     if(localStorage.getItem('token')) {
-       history.push('/principal');
+       history.push('/principal/promo');
      } 
    });
    // funcion notificaciones de error en el auth
@@ -43,7 +43,7 @@ const Auth = () => {
         notify(response.message);
       } else {
         localStorage.setItem('token', JSON.stringify(response));
-        history.push('/principal');
+        history.push('/principal/promo');
       }
   };
 
