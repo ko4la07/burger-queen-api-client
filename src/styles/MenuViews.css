@@ -5,12 +5,12 @@
 .personal-menu {
   /* border: 1px solid red; */
   display: flex;
-  margin: 4%;
-  padding: 20px 0px;
+  margin: 0 4%;
+  /* padding: 20px 0px; */
   font-weight: 300;
 }
 .personal-menu li {
-  padding: 10px 0px;
+  padding: 10px 10px;
   list-style: none;
 }
 .personal-menu a {
@@ -83,7 +83,7 @@
     display: inline-flex;
     flex-direction: column;
     float: left;
-    width: 25%;
+    width: 18%;
     height: 100%;
   }
   .line-menu {
@@ -95,6 +95,18 @@
   }
   .line-mobile-menu {
     visibility: hidden;
+  }
+  .logo-aside {
+    background-image: url('../assets/img/logoBQ-transparente.png');
+    background-position: center;
+    background-size: cover;
+    height: 150px;
+    width: 150px;
+  }
+  .line-aside {
+    height: 1px;
+    background-color: rgba(224, 152, 35, 1);
+    margin-bottom: 15px;
   }
 }
 @media screen and (min-width:1000px) {

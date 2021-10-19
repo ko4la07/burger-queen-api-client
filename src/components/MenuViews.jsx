@@ -16,10 +16,11 @@ const MenuViews = () => {
   let { url } = useRouteMatch();
   return (
     <div className = 'views-menu'>
-      <div className = 'logo-aside'></div>
       <div className = 'personal-menu'>
+      <div className = 'logo-aside'></div>
+      <div className = 'line-aside'></div>
         <li>
-          <Link to={`${url}/orders`}>Todas las ordenes</Link>
+          <Link to={`${url}/orders`}>Ordenes</Link>
         </li>
         <li>
           <Link to={`${url}/users`}>Usuarios</Link>
