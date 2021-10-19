@@ -52,7 +52,26 @@
   position: relative;
   bottom: -2px;
 }
-
+.container-header-menu-views {
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: 3.5fr 1.5fr;
+  margin: 10px 0px 20px;
+}
+.container-header-menu-views h2 {
+  font-weight: 300;
+  color: rgba(224, 152, 35, 1);
+}
+.container-header-menu-views a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+}
+.container-header-menu-views svg {
+  margin-right: 5px;
+  margin-top: 2px;
+}
 
 /* ------- MEDIA SCREENS ------ */
 @media screen and (min-width:600px) {

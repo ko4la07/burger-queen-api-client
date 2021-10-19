@@ -52,8 +52,8 @@ const DeleteProduct = ({dataProduct,fetchProducts}) => {
       <div>
       <Modal isOpen = {isOpenDeleteProduct} closeModal = {closeModalDeleteProduct}>
         <h2>Borrar producto</h2>
-        <p>Esta seguro que quiere borrar este producto?</p>
-        <button type = 'submit' onClick = {deleteAndClose} className = 'btn-delete-product'>Si, borrar.</button>
+        <p>¿Está seguro que quiere borrar este producto?</p>
+        <button type = 'submit' onClick = {deleteAndClose} className = 'btn-delete-product'>Sí, borrar.</button>
       </Modal>
       </div>
       <div className = 'message-error-auth'>

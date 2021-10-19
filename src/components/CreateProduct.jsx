@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "./Modal";
 import { useModal } from "../hooks/useModal";
 import { MdAddCircleOutline } from "react-icons/md";
+import ReturnButton from "./ReturnButton";
 
 const CreateProduct = ({fetchProducts}) => {
   function getToken() {
@@ -44,6 +45,7 @@ const CreateProduct = ({fetchProducts}) => {
 
   return (
     <>
+      <ReturnButton/>
       <div className = 'btn-new-product'>
       <button onClick ={openModalNewProduct}><MdAddCircleOutline/> Crear nuevo producto</button>
       </div>
