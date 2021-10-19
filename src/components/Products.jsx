@@ -36,7 +36,6 @@ const Products = () => {
   return (
     <div className = 'container-products'>
       <CreateProduct fetchProducts = {fetchProducts} />
-      {/* <UpdateProduct/> */}
       <div>
       <ProductTable product = {product} fetchProducts = {fetchProducts}/>
       </div>
@@ -45,4 +44,3 @@ const Products = () => {
 }
 
 export default Products;
-

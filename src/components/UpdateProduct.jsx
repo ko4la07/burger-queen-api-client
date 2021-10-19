@@ -19,7 +19,7 @@ const UpdateProduct = ({dataProduct,fetchProducts}) => {
   const urlProducts = 'https://lim015-burger-queen-api.herokuapp.com/products';
   const urlProductsId = `https://lim015-burger-queen-api.herokuapp.com/products/${dataProduct._id}`;
 
-  const updateProducts = async () => {
+  const updateProducts = () => {
     const credentials = { name, type, price, image };
     console.log(credentials);
     fetch(urlProductsId, {
