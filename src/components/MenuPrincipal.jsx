@@ -10,14 +10,14 @@ import {
 // import Orders from './Orders.jsx';
 // import Users from './Users.jsx';
 import Logout from './Logout.jsx';
-import '../styles/MenuViews.css';
+import '../styles/MenuPrincipal.css';
 import ProductsCart from "./ProductsCart";
 
 const MenuPrincipal = () => {
   let { url } = useRouteMatch();
   return (
     <div className = 'views-menu'>
-      <div className = 'personal-menu'>
+      <div className = 'personal-menu principal-menu'>
       {/* <div className = 'logo-aside'></div> */}
       <div className = 'line-aside'></div>
         <li>
