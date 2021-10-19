@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTable, useGlobalFilter} from "react-table";
+import DeleteUser from './DeleteUser';
 import GlobalFilter from './GlobalFilter';
-// import DeleteProduct from './DeleteProduct';
 import UpdateUser from './UpdateUser';
 
 const UsersTable = ({users, fetchUsers}) => {
@@ -11,7 +11,7 @@ const UsersTable = ({users, fetchUsers}) => {
         col1: element.email,
         col2: element.roles[0],
         col3: <UpdateUser dataUser = {element} fetchUsers={fetchUsers}/>,
-        // col4: <DeleteProduct dataUser = {element} fetchProducts={fetchUsers}/>,
+        col4: <DeleteUser dataUser = {element} fetchUsers={fetchUsers}/>,
       }
       return result;
     });
@@ -41,10 +41,10 @@ const UsersTable = ({users, fetchUsers}) => {
         Header: '',
         accessor: 'col3',
       },
-      // {
-      //   Header: '',
-      //   accessor: 'col4',
-      // },
+      {
+        Header: '',
+        accessor: 'col4',
+      },
     ],
     []
   )
