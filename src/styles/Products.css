@@ -61,3 +61,23 @@ table {
   width: 20px;
   margin: 0px 7px;
 }
+/* 
+  Pagination
+*/
+.container-links-pagination {
+  display: flex;
+}
+.pagination {
+  border: none;
+  background-color: transparent;
+  color: rgba(224, 152, 35, 1);
+  display: flex;
+  margin: 20px 10px;
+}
+.pagination svg {
+  width: 16px;
+  height: 16px;
+}
+.pagination:hover {
+  color: white;
+}

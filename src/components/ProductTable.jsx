@@ -75,14 +75,14 @@ const ProductTable = ({product,fetchProducts}) => {
     // debemos de hacer aqui la tabla con los valores
     <table {...getTableProps()}>
      <thead>
-     <tr>
-           <th colSpan={4}>
-             <GlobalFilter
-              preGlobalFilteredRows={preGlobalFilteredRows}
-              globalFilter={state.globalFilter}
-              setGlobalFilter={setGlobalFilter}
-             />
-           </th>
+      <tr>
+        <th colSpan={4}>
+          <GlobalFilter
+          preGlobalFilteredRows={preGlobalFilteredRows}
+          globalFilter={state.globalFilter}
+          setGlobalFilter={setGlobalFilter}
+          />
+        </th>
       </tr>
        {// Loop over the header rows
        headerGroups.map(headerGroup => (
