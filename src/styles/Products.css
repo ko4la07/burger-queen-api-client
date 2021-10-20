@@ -73,10 +73,11 @@ table {
   color: rgba(224, 152, 35, 1);
   display: flex;
   margin: 20px 10px;
+  font-size: 16px;
 }
 .pagination svg {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
 }
 .pagination:hover {
   color: white;
