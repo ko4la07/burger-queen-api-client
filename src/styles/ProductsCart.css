@@ -43,6 +43,9 @@
   bottom: 15px;
   justify-content: center;
 }
+.button-product-cart:hover {
+  background-color: rgba(224, 152, 35, 0.6);
+}
 .button-product-cart svg {
   margin: 0px 3px ;
   height: 16px;

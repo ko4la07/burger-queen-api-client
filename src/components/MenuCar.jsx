@@ -8,10 +8,10 @@ const MenuCar = () => {
   return (
     <div className = 'container-menu-car'>
       <div>
-        <li>
+        <li className = 'link-personal-area'>
           <Link to={`/home/orders`}>Mi area personal</Link>
         </li>
-        <li>
+        <li className = 'icon-shopping-cart'>
           <Link to={`${url}/cart`}><MdOutlineShoppingCart/></Link>
         </li>
       </div>
