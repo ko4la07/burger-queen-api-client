@@ -58,9 +58,12 @@ table {
   color: white;
   border: none;
   background-color: transparent;
+  border-radius: 10px;
+  padding: 5px;
+  border: 1px solid rgba(224, 152, 35, 1);
 }
 .btn-update-table:hover, .btn-delete-table:hover {
-  color: rgba(224, 152, 35, 1);
+  background-color: rgba(224, 152, 35, 1);
 }
 .btn-update-table svg, .btn-delete-table svg {
   height: 20px;
@@ -72,6 +75,11 @@ table {
 */
 .container-links-pagination {
   display: flex;
+  justify-content: center;
+}
+.container-links-pagination span {
+  margin: 20px 10px;
+  font-size: 16px;
 }
 .pagination {
   border: none;
@@ -87,4 +95,9 @@ table {
 }
 .pagination:hover {
   color: white;
+}
+.line-table {
+  height: 1px;
+  background-color: rgba(224, 152, 35, 1);
+
 }

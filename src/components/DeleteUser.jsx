@@ -11,7 +11,7 @@ const DeleteUser = ({dataUser,fetchUsers}) => {
   };
   const token = getToken();
   
-  const urlUsers = 'https://lim015-burger-queen-api.herokuapp.com/users';
+  const urlUsers = 'https://lim015-burger-queen-api.herokuapp.com/users?limit=100';
   const urlUserId = `https://lim015-burger-queen-api.herokuapp.com/users/${dataUser._id}`;
 
   const deleteUser = async () => {

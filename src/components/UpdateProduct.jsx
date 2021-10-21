@@ -16,7 +16,7 @@ const UpdateProduct = ({dataProduct,fetchProducts}) => {
   const [price, setPrice] = useState(dataProduct.price);
   const [image, setImage] = useState(dataProduct.image);
   
-  const urlProducts = 'https://lim015-burger-queen-api.herokuapp.com/products';
+  const urlProducts = 'https://lim015-burger-queen-api.herokuapp.com/products?limit=1000';
   const urlProductsId = `https://lim015-burger-queen-api.herokuapp.com/products/${dataProduct._id}`;
 
   const updateProducts = () => {

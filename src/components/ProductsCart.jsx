@@ -11,7 +11,7 @@ const ProductsCart = ({type}) => {
   
   const [product, setProduct] = useState([]);
   
-  const urlProducts = 'https://lim015-burger-queen-api.herokuapp.com/products';
+  const urlProducts = 'https://lim015-burger-queen-api.herokuapp.com/products?limit=1000';
 
   const fetchProducts = (url) => {
     fetch(url, {

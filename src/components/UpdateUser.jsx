@@ -12,10 +12,10 @@ const UpdateUser = ({dataUser, fetchUsers}) => {
   const token = getToken();
   
   const [email, setEmail] = useState(dataUser.email);
-  const [password, setPassword] = useState(dataUser.password);
+  const [password, setPassword] = useState('');
   const [roles, setRoles] = useState(dataUser.roles[0]);
   // console.log(dataUser._id);
-  const urlUsers = 'https://lim015-burger-queen-api.herokuapp.com/users';
+  const urlUsers = 'https://lim015-burger-queen-api.herokuapp.com/users?limit=100';
   const urlUsersId = `https://lim015-burger-queen-api.herokuapp.com/users/${dataUser.email}`;
 
   const updateUser = () => {
@@ -55,7 +55,7 @@ const UpdateUser = ({dataUser, fetchUsers}) => {
         </div>
         <div>
           <label htmlFor="password">Password</label>
-          <input type="" name = 'password' onChange = {(e) => setPassword(e.target.value)} value = {password}/>
+          <input type="" name = 'password' onChange = {(e) => setPassword(e.target.value)}/>
         </div>
         <div>
           <label htmlFor="roles">Roles</label>

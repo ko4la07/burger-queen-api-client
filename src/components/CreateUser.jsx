@@ -13,13 +13,13 @@ const CreateUser = ({fetchUsers}) => {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('');
+  const [roles, setRoles] = useState([]);
   
-  const urlUsers = 'https://lim015-burger-queen-api.herokuapp.com/users';
+  const urlUsers = 'https://lim015-burger-queen-api.herokuapp.com/users?limit=1000';
 
   const postUser = async () => {
-    const credentials = { email, password, role };
-    console.log(credentials);
+    const credentials = { email, password, roles };
+    // console.log(credentials);
     fetch(urlUsers, {
       method :'POST',
       headers : {
@@ -61,7 +61,7 @@ const CreateUser = ({fetchUsers}) => {
         </div>
         <div>
           <label htmlFor="role">Role</label>
-          <input type="text" name = 'role' onChange = {(e) => setRole(e.target.value)}/>
+          <input type="text" name = 'role' onChange = {(e) => setRoles([e.target.value])}/>
         </div>
         <button type = 'submit' onClick = {postAndClose} className = 'btn-create-product'>Crear usuario</button>
       </Modal>

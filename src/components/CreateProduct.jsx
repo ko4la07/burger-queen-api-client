@@ -16,7 +16,7 @@ const CreateProduct = ({fetchProducts}) => {
   const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
   
-  const urlProducts = 'https://lim015-burger-queen-api.herokuapp.com/products';
+  const urlProducts = 'https://lim015-burger-queen-api.herokuapp.com/products?limit=1000';
 
   const postProducts = async () => {
     const credentials = { name, type, price, image };

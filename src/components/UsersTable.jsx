@@ -1,8 +1,9 @@
 import React from 'react';
-import { useTable, useGlobalFilter} from "react-table";
+import { useTable, useGlobalFilter, usePagination } from "react-table";
 import DeleteUser from './DeleteUser';
 import GlobalFilter from './GlobalFilter';
 import UpdateUser from './UpdateUser';
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 const UsersTable = ({users, fetchUsers}) => {
   const dataUsers = (data) => {
@@ -38,11 +39,11 @@ const UsersTable = ({users, fetchUsers}) => {
         accessor: 'col2',
       },
       {
-        Header: '',
+        Header: 'Edit',
         accessor: 'col3',
       },
       {
-        Header: '',
+        Header: 'Delete',
         accessor: 'col4',
       },
     ],
@@ -53,17 +54,25 @@ const UsersTable = ({users, fetchUsers}) => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
+    page,
+    nextPage,
+    previousPage,
     prepareRow,
+    canNextPage,
+    canPreviousPage,
+    pageOptions,
     state,
     // preGlobalFilteredRows,
    setGlobalFilter,
    preGlobalFilteredRows,
   //  state: { globalFilter },
-  } = useTable({ columns, data }, useGlobalFilter);
+  } = useTable({ columns, data }, useGlobalFilter, usePagination);
+
+  const { pageIndex } = state;
 
   return (
-    // debemos de hacer aqui la tabla con los valores
+    <>
+      {/* debemos de hacer aqui la tabla con los valores */}
     <table {...getTableProps()}>
      <thead>
      <tr>
@@ -82,7 +91,11 @@ const UsersTable = ({users, fetchUsers}) => {
            {// Loop over the headers in each row
            headerGroup.headers.map(column => (
              // Apply the header cell props
-             <th {...column.getHeaderProps()}>
+             <th {...column.getHeaderProps()} 
+             style={{
+              borderBottom: 'solid 1px rgba(224, 152, 35, 1)',
+              // color: 'black',
+            }}>
                {// Render the header
                column.render('Header')}
              </th>
@@ -93,7 +106,7 @@ const UsersTable = ({users, fetchUsers}) => {
      {/* Apply the table body props */}
      <tbody {...getTableBodyProps()} className = 'elements-table-products'>
        {// Loop over the table rows
-       rows.map(row => {
+       page.map(row => {
          // Prepare the row for display
          prepareRow(row)
          return (
@@ -103,7 +116,11 @@ const UsersTable = ({users, fetchUsers}) => {
              row.cells.map(cell => {
                // Apply the cell props
                return (
-                 <td {...cell.getCellProps()}>
+                 <td {...cell.getCellProps()} 
+                 style={{
+                  padding: '5px 10px 0px',
+                  // border: 'solid 1px gray',
+                }}>
                    {// Render the cell contents
                    cell.render('Cell')}
                  </td>
@@ -114,6 +131,18 @@ const UsersTable = ({users, fetchUsers}) => {
        })}
      </tbody>
    </table>
+   <div className="line-table"></div>
+   <div className = 'container-links-pagination'>
+     <span>
+       Página{' '}
+       <strong>
+         {pageIndex + 1} of {pageOptions.length}
+       </strong> {' '}
+     </span>
+     <button onClick = {() => previousPage()} disabled = {!canPreviousPage} className = 'pagination'><MdKeyboardArrowLeft/> Página anterior</button>
+     <button onClick = {() => nextPage()} disabled = {!canNextPage} className = 'pagination'>Página siguiente <MdKeyboardArrowRight /></button>
+   </div>
+    </>
   )
 };
 

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import UsersTable from './UsersTable'
 import '../styles/Products.css';
 import CreateUser from "./CreateUser";
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 const Users = () => {
   function getToken() {
@@ -12,9 +11,8 @@ const Users = () => {
   const token = getToken();
   
   const [users, setUsers] = useState([]);
-  const [index, setIndex] = useState(1);
   
-  const urlUsers = `https://lim015-burger-queen-api.herokuapp.com/users?page=${index}`;
+  const urlUsers = 'https://lim015-burger-queen-api.herokuapp.com/users?limit=1000';
 
   const fetchUsers = async (url) => {
     setUsers( await fetch(url, {
@@ -34,28 +32,11 @@ const Users = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[urlUsers])
 
-  const onPrevious = () => {
-    setIndex(index - 1);
-  };
-
-  const onNext = () => {
-    setIndex(index + 1);
-  };
-  // console.log(index);
-  
   return (
     <div className = 'container-products'>
       <CreateUser fetchUsers = {fetchUsers} />
       <div>
       <UsersTable users = {users} fetchUsers = {fetchUsers}/>
-      </div>
-      <div className = 'container-links-pagination'>
-        {
-          index === 1 ? null : (<button onClick = {onPrevious} className = 'pagination'><MdKeyboardArrowLeft/>Página anterior</button>)
-        }
-        {
-          users.length < 10 ? null : (<button onClick = {onNext} className = 'pagination'>Página siguiente <MdKeyboardArrowRight/></button>)
-        }
       </div>
     </div>
   )
