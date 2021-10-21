@@ -48,5 +48,13 @@
 }
 .button-order-look:hover {
   background-color: rgba(224, 152, 35, 0.6);
-
+}
+.products-order-header, .container-one-order-look p {
+  color: rgba(224, 152, 35, 1);
+}
+.products-order-body td {
+  text-align: center;
+}
+.products-order-name {
+  font-size: 14px;
 }

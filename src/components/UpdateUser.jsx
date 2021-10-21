@@ -59,7 +59,7 @@ const UpdateUser = ({dataUser, fetchUsers}) => {
         </div>
         <div>
           <label htmlFor="roles">Roles</label>
-          <select name ="roles" onChange={(e) => setRoles(e.target.value)} defaultValue = {dataUser.roles[0]._id}>
+          <select name ="roles" onChange={(e) => setRoles(e.target.value)} defaultValue = {dataUser.roles[0]._id} className = 'select-roles'>
             <option value={'615a747f726d6d07d7eae7a7'}>admin</option>
             <option value={'615a747f726d6d07d7eae7a5'}>user</option>
             <option value={'6170ed4ac2fa424eb5cb9351'}>chef</option>

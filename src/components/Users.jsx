@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import UsersTable from './UsersTable'
-import '../styles/Products.css';
+import '../styles/Users.css';
 import CreateUser from "./CreateUser";
 
 const Users = () => {
@@ -11,7 +11,7 @@ const Users = () => {
   const token = getToken();
   
   const [users, setUsers] = useState([]);
-  
+  // console.log(users);
   const urlUsers = 'https://lim015-burger-queen-api.herokuapp.com/users?limit=1000';
 
   const fetchUsers = async (url) => {

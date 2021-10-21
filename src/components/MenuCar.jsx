@@ -9,7 +9,7 @@ const MenuCar = () => {
     <div className = 'container-menu-car'>
       <div>
         <li className = 'link-personal-area'>
-          <Link to={`/home/orders`}>Mi area personal</Link>
+          <Link to={`/home/orders`}>Mi área personal</Link>
         </li>
         <li className = 'icon-shopping-cart'>
           <Link to={`${url}/cart`}><MdOutlineShoppingCart/></Link>

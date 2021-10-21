@@ -10,12 +10,12 @@ const LookOrder = ({idOrder}) => {
   const token = getToken();
   
   const [order, setOrder] = useState([]);
-  
+  // console.log(order);
   // const urlOrders = 'https://lim015-burger-queen-api.herokuapp.com/orders';
   const urlOrderId = `https://lim015-burger-queen-api.herokuapp.com/orders/${idOrder}`;
 
   const fetchOrderId = async (url) => {
-    setOrder( await fetch(url, {
+    setOrder(await fetch(url, {
       method :'GET',
       headers : {
         'Accept': 'application/json',
@@ -33,39 +33,68 @@ const LookOrder = ({idOrder}) => {
   },[])
 
   const [isOpenLookOrder, openModalLookOrder, closeModalLookOrder] = useModal(false);
+  
+// const openModalFetchUserId = () => {
+//   openModalLookOrder();
+//   fetchOrderId(urlOrderId);
+// };
+
+  const totalCst = (parameter) => {
+    const array = parameter.products;
+    let sum = 0;
+    if (array) {
+      array.forEach((prod) => {
+        sum+= prod.product["price"];
+      })
+    }
+    return sum;
+  };
 
   return (
-    <div className = ''>
+    <div className = 'container-one-order-look'>
       <button id={order._id} className = 'button-order-look' onClick = {openModalLookOrder}>Ver orden</button>
       <Modal isOpen = {isOpenLookOrder} closeModal = {closeModalLookOrder}>
         <h2>Resumen de la orden</h2>
         <div>
           <p>Mesero Id</p>
-          <p>{order.userId}</p>
+          <span>{order.userId}</span>
         </div>
         <div>
           <p>Cliente</p>
-          <p>{order.client}</p>
+          <span>{order.client}</span>
         </div>
         <div>
           <p>Estado</p>
-          <p>{order.status}</p>
+          <span>{order.status}</span>
         </div>
         <div>
           <p>Orden</p>
-          {/* {
-            order.products.map((product) => {
+          <table>
+          <thead>
+            <tr className = 'products-order-header'>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+            </tr>
+          </thead>
+          {
+           order.products ? (order.products).map((product) => {
               return(
-                <div>
-                  <div>{product.qty}</div>
-                  <div>{product._id}</div>
-                </div>
+                <tbody key = {product._id}>
+                  <tr  className = 'products-order-body'>
+                    <td className = 'products-order-name'>{product.product["name"]}</td>
+                    <td>{product.product["price"]}</td>
+                    <td>{product.qty}</td>
+                  </tr>
+                </tbody>
               )
-            })
-          } */}
+            }):null
+          }
+          </table>
         </div>
         <div>
           <p>Total</p>
+          <span>S/ {totalCst(order)}</span>
         </div>
         <button id={order._id} className = 'btn-delete-product'>Modificar orden</button>
       </Modal>
