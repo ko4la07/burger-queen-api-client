@@ -10,7 +10,7 @@ const UsersTable = ({users, fetchUsers}) => {
     const arrayUsers = data.map((element) => {
       const result ={
         col1: element.email,
-        col2: element.roles[0],
+        col2: element.roles[0].name,
         col3: <UpdateUser dataUser = {element} fetchUsers={fetchUsers}/>,
         col4: <DeleteUser dataUser = {element} fetchUsers={fetchUsers}/>,
       }

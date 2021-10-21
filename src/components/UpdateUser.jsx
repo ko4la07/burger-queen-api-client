@@ -13,7 +13,7 @@ const UpdateUser = ({dataUser, fetchUsers}) => {
   
   const [email, setEmail] = useState(dataUser.email);
   const [password, setPassword] = useState('');
-  const [roles, setRoles] = useState(dataUser.roles[0]);
+  const [roles, setRoles] = useState(dataUser.roles[0].name);
   // console.log(dataUser._id);
   const urlUsers = 'https://lim015-burger-queen-api.herokuapp.com/users?limit=100';
   const urlUsersId = `https://lim015-burger-queen-api.herokuapp.com/users/${dataUser.email}`;
@@ -31,7 +31,7 @@ const UpdateUser = ({dataUser, fetchUsers}) => {
       body: JSON.stringify(credentials)
       })
       .then(response => response.json())
-      .then((data) => console.log(data))
+      // .then((data) => console.log(data))
       .then(() => fetchUsers(urlUsers))
       .catch((error) => console.log(error));
   };
@@ -59,7 +59,12 @@ const UpdateUser = ({dataUser, fetchUsers}) => {
         </div>
         <div>
           <label htmlFor="roles">Roles</label>
-          <input type="" name = 'roles' onChange = {(e) => setRoles(e.target.value)} value = {roles}/>
+          <select name ="roles" onChange={(e) => setRoles(e.target.value)} defaultValue = {dataUser.roles[0]._id}>
+            <option value={'615a747f726d6d07d7eae7a7'}>admin</option>
+            <option value={'615a747f726d6d07d7eae7a5'}>user</option>
+            <option value={'6170ed4ac2fa424eb5cb9351'}>chef</option>
+            <option value={'615a747f726d6d07d7eae7a6'}>moderator</option>
+          </select>
         </div>
         <button type = 'submit' onClick = {updateAndClose} className = 'btn-update-product'>Enviar y actualizar</button>
       </Modal>

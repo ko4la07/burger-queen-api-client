@@ -3,7 +3,7 @@ import { useTable, useGlobalFilter, usePagination } from "react-table";
 import GlobalFilter from './GlobalFilter';
 import UpdateProduct from './UpdateProduct';
 import DeleteProduct from './DeleteProduct';
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight, MdPhotoSizeSelectActual } from "react-icons/md";
 
 const ProductTable = ({product,fetchProducts}) => {
   const dataProducts = (prod) => {
@@ -11,7 +11,7 @@ const ProductTable = ({product,fetchProducts}) => {
       const result ={
         col1: element.name,
         col2: element.type,
-        col3: element.image ? 'si' : 'no',
+        col3: element.image ? <MdPhotoSizeSelectActual/> : 'no',
         col4: element.price,
         col5: <UpdateProduct dataProduct = {element} fetchProducts={fetchProducts}/>,
         col6: <DeleteProduct dataProduct = {element} fetchProducts={fetchProducts}/>,
