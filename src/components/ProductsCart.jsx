@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import '../styles/ProductsCart.css';
-import ProductToCard from "./ProductsToCart";
+import ProductsToCart from "./ProductsToCart";
 
-const ProductsCart = ({type}) => {
+const ProductsCart = ({type,handleAddition,handleRemove,productsOnCart}) => {
   function getToken() {
     const token = JSON.parse(localStorage.getItem('token'))['token'];
     return token;
@@ -48,7 +48,11 @@ const ProductsCart = ({type}) => {
     <div className = 'container-products-cart'>
       <div>
       <div>
-        <ProductToCard product = {dataTypes(type)} />
+        {
+          dataTypes(type).map((product) => (
+        <ProductsToCart key={product._id} product = {product} data = {{handleAddition,handleRemove,productsOnCart}} />
+          ))
+        }
       </div>
       </div>
     </div>
