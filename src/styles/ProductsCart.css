@@ -42,6 +42,7 @@
   position: absolute;
   bottom: 15px;
   justify-content: center;
+  cursor: pointer;
 }
 .button-product-cart:hover {
   background-color: rgba(224, 152, 35, 0.6);
@@ -50,4 +51,7 @@
   margin: 0px 3px ;
   height: 16px;
   width: 16px;
+}
+.danger {
+  background-color: rgba(226, 104,23, 0.6);
 }

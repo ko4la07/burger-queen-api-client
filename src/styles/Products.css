@@ -27,6 +27,7 @@
   background-color: rgba(224, 152, 35, 1);
   border: none;
   border-radius: 10px;
+  cursor: pointer;
 }
 .btn-new-product button:hover {
   background-color: rgba(224, 152, 35, 0.6);
@@ -61,6 +62,7 @@ table {
   border-radius: 10px;
   padding: 5px;
   border: 1px solid rgba(224, 152, 35, 1);
+  cursor: pointer;
 }
 .btn-update-table:hover, .btn-delete-table:hover {
   background-color: rgba(224, 152, 35, 1);

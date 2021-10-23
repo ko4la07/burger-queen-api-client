@@ -48,6 +48,9 @@
   height: 20px;
   width: 20px;
 }
+.modal-close path {
+  color: white;
+}
 .modal-close svg {
   height: 18px;
   width: 18px;
@@ -70,11 +73,21 @@ CREATE PRODUCT
   font-weight: 300;
   font-size: 15px;
   margin: 25px;
+  cursor: pointer;
+}
+.btn-create-product:hover, .btn-update-product:hover, .btn-delete-product:hover {
+  background-color: rgba(224, 152, 35, 0.6);
+
 }
 .modal-container div {
   /* border: 1px solid red; */
   display: grid;
   grid-template-columns: 1fr 2fr;
+  color: white;
+}
+.modal-container p {
+  color: rgba(224, 152, 35, 1);
+  font-weight: 400;
 }
 .modal-container input {
   background-color: rgba(76, 76, 81, 1);
@@ -86,4 +99,47 @@ CREATE PRODUCT
   justify-content: flex-end;
   color: white;
   padding: 0px 10px;
+}
+.item-carrito {
+  color: white;
+}
+.count-total {
+  background-color: white;
+  border-radius: 50%;
+  height: 22px;
+  width: 22px;
+  text-align: center;
+  position: relative;
+  right: -30px;
+  /* top: -10px; */
+  font-weight: 500;
+  z-index: 100;
+}
+.total-price {
+  color: white;
+}
+.boton-eliminar-item {
+  background-color: transparent;
+  border: none;
+}
+.boton-eliminar-item path {
+  color: white;
+  cursor: pointer;
+}
+.boton-eliminar-item path:hover {
+  color: rgba(224, 152, 35, 1);
+}
+.btn-vaciar {
+  display: flex;
+  border: 1px solid rgba(224, 152, 35, 1);
+  background-color: transparent;
+  /* background-color: rgba(224, 152, 35, 1); */
+  width: 60px;
+  justify-content: center;
+  border-radius: 5px;
+  color: white;
+  padding: 3px 5px;
+}
+.btn-vaciar:hover {
+  background-color: rgba(224, 152, 35, 1);
 }

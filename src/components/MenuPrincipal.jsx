@@ -1,18 +1,14 @@
 import React,{useState} from 'react';
 import {
-  // BrowserRouter as Router,
-  Switch,
-  Route,
+  // Switch,
+  // Route,
   Link,
   useRouteMatch
 } from "react-router-dom";
-// import Products from './Products.jsx';
-// import Orders from './Orders.jsx';
-// import Users from './Users.jsx';
 import Logout from './Logout.jsx';
 import '../styles/MenuPrincipal.css';
 import ProductsCart from "./ProductsCart";
-import MenuCar from "./MenuCar";
+import Cart from './Cart.jsx';
 
 const MenuPrincipal = () => {
   let { url } = useRouteMatch();
@@ -20,24 +16,32 @@ const MenuPrincipal = () => {
 
   const handleAddition = (item) => {
     setItemList([...itemList, item]);
-  }
+  };
 
   const handleRemove = (item) => {
     const newItemList = itemList.filter(product => product._id !== item._id);
     setItemList(newItemList);
-  }
+  };
 
   const handleVaciar = () => {
     setItemList([]);
-  }
+  };
+  
   return (
     <div>
+      <nav>
+      <div className = 'container-menu-car'>
+        <li className = 'link-personal-area'>
+          <Link to={`/home/orders`}>Mi área personal</Link>
+        </li>
+        <Cart productsOnCart={itemList} handleRemove={handleRemove} handleVaciar={handleVaciar}/>
+      </div>
+    </nav>
       <div className = 'menu-car-cart'>
-        <MenuCar productsOnCart={itemList} handleRemove={handleRemove} handleVaciar={handleVaciar}/>
+        {/* <MenuCar productsOnCart={itemList} handleRemove={handleRemove} handleVaciar={handleVaciar}/> */}
       </div>
     <div className = 'views-menu'>
       <div className = 'personal-menu principal-menu'>
-      {/* <div className = 'logo-aside'></div> */}
       <div className = 'line-aside'></div>
         <li>
           <Link to={`${url}/promo`}>Promociones</Link>
@@ -58,9 +62,12 @@ const MenuPrincipal = () => {
         <Logout/>
         </div>
       </div>
-      {/* <div className = 'line-menu'></div>
-      <div className = 'line-mobile-menu'></div> */}
-      <Switch>
+      <ProductsCart type={'promo'} handleAddition={handleAddition} handleRemove={handleRemove} productsOnCart={itemList} />
+      <ProductsCart type={'burgers'} handleAddition={handleAddition} handleRemove={handleRemove} productsOnCart={itemList} />
+      <ProductsCart type={'complements'} handleAddition={handleAddition} handleRemove={handleRemove} productsOnCart={itemList} />
+      <ProductsCart type={'salad'} handleAddition={handleAddition} handleRemove={handleRemove} productsOnCart={itemList} />
+      <ProductsCart type={'drinks'} handleAddition={handleAddition} handleRemove={handleRemove} productsOnCart={itemList} />
+      {/* <Switch>
         <Route path={`${url}/promo`}>
           <div className = 'products-cart-principal'>
             <h1>Promociones</h1>
@@ -91,7 +98,7 @@ const MenuPrincipal = () => {
             <ProductsCart type = {'drinks'} handleAddition={handleAddition} handleRemove={handleRemove} productsOnCart={itemList}/>
           </div>
         </Route>
-      </Switch>
+      </Switch> */}
     </div>
     </div>
   )

@@ -6,7 +6,9 @@ import { useModal } from "../hooks/useModal";
 
 const Cart = (props) => {
   // let { url } = useRouteMatch();
-  const { handleRemove,handleVaciar,productsOnCart } = props.data;
+  // const { handleRemove,handleVaciar,productsOnCart } = props.data;
+  const { handleRemove,handleVaciar,productsOnCart } = props;
+
 
   const remover = (product) => {
     handleRemove(product);
@@ -17,30 +19,57 @@ const Cart = (props) => {
   }
 
   const [isOpenModalCart, openModalCart, closeModalCart] = useModal(false);
-
+  // console.log('total productos:',productsOnCart.length);
   
   let total = 0;
 
   return (
     <>
-      <li className = 'icon-shopping-cart'>
-        <button onClick ={openModalCart} ><MdOutlineShoppingCart/></button>
-      </li>
+      <div>
+        <p className = 'count-total'>{productsOnCart.length}</p>
+        <button onClick ={openModalCart} className = 'icon-shopping-cart'><MdOutlineShoppingCart/></button>
+      </div>
       <div className="modal-new-product">
         <Modal isOpen = {isOpenModalCart} closeModal = {closeModalCart}>
-        <button waves="effect"className="boton-vaciar" onClick={() => vaciar()}>Vaciar</button>
-          <h2>Resumen de la orden</h2>
-          <ul>
+        <button className="btn-vaciar" onClick={() => vaciar()}>Vaciar</button>
+          <h2>Carrito</h2>
+          <div>
+            <p>Mesero Id</p>
+            <>mesero id</>
+        </div>
+        <div>
+            <p>Cliente</p>
+            <input></input>
+        </div>
+        {/* <div>
+            <p>Estado</p>
+            <span>estado</span>
+        </div> */}
+          <table>
+          <thead>
+            <tr className = 'products-order-header'>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th></th>
+            </tr>
+          </thead>
           {productsOnCart ? productsOnCart.map((product, i) => {
-            total += (product.id / 150);
+            total += (product.price);
             return (
-              <li key={i} className="item-carrito">
-                {`ID Producto: ${product.name}`}<button className="boton-eliminar-item" onClick={() => remover(product)}><MdCancel/></button>
-              </li>
+              <tbody key={i} className="item-carrito">
+              <tr  className = 'products-order-body'>
+                <td className = 'products-order-name'>{product.name}</td>
+                <td>{product.price}</td>
+                <td></td>
+                <td><button className="boton-eliminar-item" onClick={() => remover(product)}><MdCancel/></button></td>
+              </tr>
+              </tbody>
             )
           }): <p>Loading...</p> }
-        </ul>
-        <p className="multiline"><strong>{`Total: `}</strong> S/ {parseFloat(total.toFixed(2))}</p>
+        </table>
+        <div className="total-price"><strong>{`Total: `}</strong> S/ {parseFloat(total.toFixed(2))}</div>
+        <button className = 'btn-delete-product'>Enviar orden</button>
         </Modal>
       </div>
     </>

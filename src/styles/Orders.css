@@ -45,6 +45,7 @@
   position: absolute;
   bottom: 13px;
   right: 15px;
+  cursor: pointer;
 }
 .button-order-look:hover {
   background-color: rgba(224, 152, 35, 0.6);
