@@ -17,6 +17,12 @@
   position: relative;
   justify-content: center;
 }
+.container-orders-chef {
+  display: flex;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
+  justify-content: center;
+}
 .img-products-cart {
   height: 100px;
   width: 120px;

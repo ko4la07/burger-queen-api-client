@@ -29,6 +29,7 @@
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   width: 100%;
+  font-size: 16px;
 }
 .rows-name {
   color: rgba(224, 152, 35, 1);
@@ -52,6 +53,7 @@
 }
 .products-order-header, .container-one-order-look p {
   color: rgba(224, 152, 35, 1);
+  font-size: 18px;
 }
 .products-order-body td {
   text-align: center;

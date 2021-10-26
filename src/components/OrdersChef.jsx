@@ -38,10 +38,20 @@ const OrdersChef = () => {
   };
   
   return (
-    <div className = 'container-products'>
+    <div>
       <ReturnButton/>
       <h2>Orders to Chef</h2>
-      <OrderChef orders = {ordersToPrepare(orders)}/>
+      <div className = 'container-orders-chef'>
+      {
+        ordersToPrepare(orders).map((order) => {
+          return (
+            <div className = 'products-cart-box' key = {order._id}>
+              <OrderChef order = {order} fetchOrders = {fetchOrders}/>
+            </div>
+          )
+        })
+      }
+      </div>
     </div>
   )
 }
