@@ -3,6 +3,7 @@ import Modal from "./Modal";
 import { MdOutlineShoppingCart, MdCancel } from "react-icons/md";
 // import { Link, useRouteMatch } from "react-router-dom";
 import { useModal } from "../hooks/useModal";
+import { useEffect } from "react/cjs/react.development";
 // import { useEffect } from "react/cjs/react.development";
 
 const Cart = (props) => {
@@ -15,6 +16,7 @@ const Cart = (props) => {
   // let { url } = useRouteMatch();
   // const { handleRemove,handleVaciar,productsOnCart } = props.data;
   const { handleRemove,handleVaciar,productsOnCart } = props;
+  const [counts, setCounts] = useState({});
 
   const [userId, setUserId] = useState();
   const [client, setClient] = useState();
@@ -52,9 +54,22 @@ const Cart = (props) => {
       .catch((error) => console.log(error));
   };
 
+  useEffect(() => {
+    checkProductsQTY();
+  }, [productsOnCart]);
+
   const remover = (product) => {
-    handleRemove(product);
+    productsOnCart.splice(productsOnCart.indexOf(product), 1);
+    checkProductsQTY();
+
+    if (!(counts[product._id])) {
+      handleRemove(product);
+    }
   }
+
+  // const remover = (product) => {
+  //   handleRemove(product);
+  // }
 
   const vaciar = () => {
     handleVaciar();
@@ -64,6 +79,14 @@ const Cart = (props) => {
   // console.log('total productos:',productsOnCart.length);
   
   let total = 0;
+
+  const checkProductsQTY = () => {
+    const cont = {};
+    for(const product of productsOnCart) {
+      cont[product._id] = cont[product._id] ? cont[product._id] + 1 : 1;
+    }
+    setCounts(cont);
+  };
 
   return (
     <>
@@ -96,14 +119,14 @@ const Cart = (props) => {
               <th></th>
             </tr>
           </thead>
-          {productsOnCart ? productsOnCart.map((product, i) => {
-            total += (product.price);
+          {productsOnCart ? [...new Set(productsOnCart)].map((product, i) => {
+            total += (product.price*counts[product._id]);
             return (
               <tbody key={i} className="item-carrito">
               <tr  className = 'products-order-body'>
                 <td className = 'products-order-name'>{product.name}</td>
                 <td>{product.price}</td>
-                <td>1</td>
+                <td>{counts[product._id]}</td>
                 <td><button className="boton-eliminar-item" onClick={() => remover(product)}><MdCancel/></button></td>
               </tr>
               </tbody>
