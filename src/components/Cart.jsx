@@ -1,14 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "./Modal";
 import { MdOutlineShoppingCart, MdCancel } from "react-icons/md";
 // import { Link, useRouteMatch } from "react-router-dom";
 import { useModal } from "../hooks/useModal";
+// import { useEffect } from "react/cjs/react.development";
 
 const Cart = (props) => {
+  function getToken() {
+    const token = JSON.parse(localStorage.getItem('token'))['token'];
+    return token;
+  };
+  const token = getToken();
+
   // let { url } = useRouteMatch();
   // const { handleRemove,handleVaciar,productsOnCart } = props.data;
   const { handleRemove,handleVaciar,productsOnCart } = props;
 
+  const [userId, setUserId] = useState();
+  const [client, setClient] = useState();
+  const [products, setProducts] = useState([]);
+  
+  // const urlOrders = 'https://lim015-burger-queen-api.herokuapp.com/orders?limit=1000';
+  const urlOrdersFetch = 'https://lim015-burger-queen-api.herokuapp.com/orders';
+
+  const sendOrder = async () => {
+    setProducts(productsOnCart.map((prod) => {
+    const objectProduct = {
+      qty: 1,
+      productId: prod._id
+    }
+    return objectProduct;
+  }));
+  // setProductsOrder(productsToOrder);
+  console.log(products);
+
+    const orderToSend = { userId, client, products};
+    console.log(orderToSend);
+
+    fetch(urlOrdersFetch, {
+      method :'POST',
+      headers : {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        "Authorization" : `Bearer ${token}`,
+      },
+      body: JSON.stringify(orderToSend)
+      })
+      .then(response => response.json())
+      .then((data) => console.log(data))
+      // .then(() => fetchProducts(urlOrders)) 
+      .catch((error) => console.log(error));
+  };
 
   const remover = (product) => {
     handleRemove(product);
@@ -35,11 +77,11 @@ const Cart = (props) => {
           <h2>Carrito</h2>
           <div>
             <p>Mesero Id</p>
-            <>mesero id</>
+            <input type = 'text' onChange = {(e) => setUserId(e.target.value)}></input>
         </div>
         <div>
             <p>Cliente</p>
-            <input></input>
+            <input type = 'text' onChange = {(e) => setClient(e.target.value)}></input>
         </div>
         {/* <div>
             <p>Estado</p>
@@ -61,7 +103,7 @@ const Cart = (props) => {
               <tr  className = 'products-order-body'>
                 <td className = 'products-order-name'>{product.name}</td>
                 <td>{product.price}</td>
-                <td></td>
+                <td>1</td>
                 <td><button className="boton-eliminar-item" onClick={() => remover(product)}><MdCancel/></button></td>
               </tr>
               </tbody>
@@ -69,7 +111,7 @@ const Cart = (props) => {
           }): <p>Loading...</p> }
         </table>
         <div className="total-price"><strong>{`Total: `}</strong> S/ {parseFloat(total.toFixed(2))}</div>
-        <button className = 'btn-delete-product'>Enviar orden</button>
+        <button type = 'submit' className = 'btn-delete-product' onClick = {sendOrder}>Enviar orden</button>
         </Modal>
       </div>
     </>

@@ -16,11 +16,12 @@ const CreateUser = ({fetchUsers}) => {
   const [roles, setRoles] = useState([]);
   
   const urlUsers = 'https://lim015-burger-queen-api.herokuapp.com/users?limit=1000';
+  const urlUsersFetch = 'https://lim015-burger-queen-api.herokuapp.com/users';
 
   const postUser = async () => {
     const credentials = { email, password, roles };
     // console.log(credentials);
-    fetch(urlUsers, {
+    fetch(urlUsersFetch, {
       method :'POST',
       headers : {
         'Content-Type': 'application/json',

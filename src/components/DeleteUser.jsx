@@ -40,8 +40,8 @@ const DeleteUser = ({dataUser,fetchUsers}) => {
       <div>
       <Modal isOpen = {isOpenDeleteUser} closeModal = {closeModalDeleteUser}>
         <h2>Eliminar Usuario</h2>
-        <p>¿Está seguro que desea eliminar este usuario?</p>
-        <p style = {{fontWeight: 'bold'}}>{dataUser.email}</p>
+        <span>¿Está seguro que desea eliminar este usuario?</span>
+        <span style = {{fontWeight: 'bold'}}>{dataUser.email}</span>
         <button type = 'submit' onClick = {deleteAndClose} className = 'btn-delete-product'>Sí, eliminar.</button>
       </Modal>
       </div>

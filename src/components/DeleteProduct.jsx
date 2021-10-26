@@ -52,8 +52,8 @@ const DeleteProduct = ({dataProduct,fetchProducts}) => {
       <div>
       <Modal isOpen = {isOpenDeleteProduct} closeModal = {closeModalDeleteProduct}>
         <h2>Eliminar producto</h2>
-        <p>¿Está seguro que desea eliminar este producto?</p>
-        <p style = {{fontWeight: 'bold'}}>{dataProduct.name}</p>
+        <span>¿Está seguro que desea eliminar este producto?</span>
+        <span style = {{fontWeight: 'bold'}}>{dataProduct.name}</span>
         <button type = 'submit' onClick = {deleteAndClose} className = 'btn-delete-product'>Sí, eliminar.</button>
       </Modal>
       </div>

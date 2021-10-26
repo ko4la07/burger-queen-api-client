@@ -77,7 +77,6 @@ CREATE PRODUCT
 }
 .btn-create-product:hover, .btn-update-product:hover, .btn-delete-product:hover {
   background-color: rgba(224, 152, 35, 0.6);
-
 }
 .modal-container div {
   /* border: 1px solid red; */

@@ -17,11 +17,12 @@ const CreateProduct = ({fetchProducts}) => {
   const [image, setImage] = useState('');
   
   const urlProducts = 'https://lim015-burger-queen-api.herokuapp.com/products?limit=1000';
+  const urlPdts = 'https://lim015-burger-queen-api.herokuapp.com/products';
 
   const postProducts = async () => {
     const credentials = { name, type, price, image };
     console.log(credentials);
-    fetch(urlProducts, {
+    fetch(urlPdts, {
       method :'POST',
       headers : {
         'Content-Type': 'application/json',

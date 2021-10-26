@@ -1,7 +1,8 @@
 import React from 'react';
 import Auth from './Auth';
-import MenuViews from './MenuViews';
+// import MenuViews from './MenuViews';
 import '../styles/Home.css';
+import MenuByUserType from './MenuByUserType';
 
 const Home = () => {
   function getToken() {
@@ -11,7 +12,8 @@ const Home = () => {
   };
   return getToken()?(
     <div className = 'container-home'>
-      <MenuViews />
+      {/* <MenuViews /> */}
+      <MenuByUserType/>
     </div>
   ):(<Auth />)
 };

@@ -43,6 +43,7 @@ const Auth = () => {
         notify(response.message);
       } else {
         localStorage.setItem('token', JSON.stringify(response));
+        localStorage.setItem('email', email);
         history.push('/principal/promo');
       }
   };

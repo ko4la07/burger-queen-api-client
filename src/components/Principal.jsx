@@ -9,6 +9,7 @@ const Principal = () => {
     const tokenString = localStorage.getItem('token');
     return tokenString;
   };
+  
   return getToken()?(
     <div className = 'container-principal'>
       <div className = 'image-products-cart'>

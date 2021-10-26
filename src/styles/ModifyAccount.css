@@ -1,0 +1,70 @@
+.container-account {
+  /* border: 1px solid red; */
+  margin: 30px;
+  padding: 30px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  border-radius: 15px;
+  background-color: rgba(76, 76, 81, 1);
+}
+.container-account h2 {
+  font-weight: 300;
+  margin: 20px 0px 30px;
+  color: rgba(224, 152, 35, 1);
+}
+.account-rows {
+  display: flex;
+  flex-direction: column;
+}
+.account-rows label {
+  font-weight: 100;
+  margin: 0px 5px;
+}
+.account-rows input {
+  border: none;
+  background-color: rgba(115, 115, 117, 1);
+  border-radius: 10px;
+  height: 30px;
+  margin: 7px 0px 20px;
+}
+.one-order-box-chef {
+  display: flex;
+  flex-direction: column;
+  line-height: 30px;
+  align-items: center;
+  margin: 40px 10px 10px;
+  background-color: rgba(76, 76, 81, 1);
+  border-radius: 10px;
+  width: 240px;
+  /* height: 180px; */
+  padding: 0px 25px 15px;
+  position: relative;
+  justify-content: center;
+  font-weight: 300;
+  padding: 25px;
+}
+.one-order-box-chef table {
+  margin: 15px 0px 0px;
+}
+.btn-listo-chef {
+  display: flex;
+  justify-content: center;
+  /* margin-top: 15px; */
+  background-color: rgba(224, 152, 35, 1);
+  border: none;
+  padding: 5px 50px;
+  border-radius: 10px;
+  align-self: center;
+  color: white;
+  font-weight: 300;
+  font-size: 15px;
+  margin: 25px;
+  cursor: pointer;
+}
+.btn-listo-chef:hover {
+  background-color: rgba(224, 152, 35, 0.6);
+}
+.products-order-qty {
+  font-size: 16px;
+}
