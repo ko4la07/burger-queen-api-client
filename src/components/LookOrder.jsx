@@ -44,11 +44,16 @@ const LookOrder = ({idOrder}) => {
     let sum = 0;
     if (array) {
       array.forEach((prod) => {
-        sum+= prod.product["price"];
+        sum+= prod.product["price"]*prod.qty;
       })
     }
     return sum;
   };
+
+  const modifyOrder = () => {
+    localStorage.setItem('orderId', order._id);
+  };
+  // console.log(localStorage.getItem('orderId'));
 
   return (
     <div className = 'container-one-order-look'>
@@ -96,7 +101,7 @@ const LookOrder = ({idOrder}) => {
           <p>Total</p>
           <span>S/ {totalCst(order)}</span>
         </div>
-        <button id={order._id} className = 'btn-delete-product'>Modificar orden</button>
+        <button className = 'btn-delete-product' onClick = {modifyOrder}>Modificar orden</button>
       </Modal>
     </div>
   )

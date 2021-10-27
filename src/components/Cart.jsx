@@ -17,7 +17,7 @@ const Cart = (props) => {
   // const { handleRemove,handleVaciar,productsOnCart } = props.data;
   const { handleRemove, handleVaciar, productsOnCart, handleAddition } = props;
   const [counts, setCounts] = useState({});
-  // console.log(counts);
+  // console.log(productsOnCart);
   const [userId, setUserId] = useState();
   const [client, setClient] = useState();
   const [products, setProducts] = useState([]);
@@ -93,6 +93,43 @@ const Cart = (props) => {
     handleAddition(product);
   };
 
+  // --------
+  // const orderId = localStorage.getItem('orderId');
+  // const urlOrderId = `https://lim015-burger-queen-api.herokuapp.com/orders/${orderId}`;
+
+  // const orderToModify = async (url) => {
+  //   fetch(url, {
+  //     method :'GET',
+  //     headers : {
+  //       'Accept': 'application/json',
+  //       "Authorization" : `Bearer ${token}`,
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       data.products.forEach((element) => {
+  //         productsOnCart.push(element.product);
+  //       })
+  //     })
+  //     .catch((error) => console.log(error))
+  // };
+  // console.log(productsOnCart);
+
+  //   useEffect(() => {
+  //     // orderToModify(urlOrderId);
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // },[productsOnCart])
+  // --------
+
+  const sendAndClose = () => {
+    sendOrder();
+    closeModalCart();
+    // vaciar();
+    // document.querySelector('#inputMesero').value = '';
+    // document.querySelector('#inputClient').value = '';
+  };
+
   return (
     <>
       <div>
@@ -101,15 +138,18 @@ const Cart = (props) => {
       </div>
       <div className="modal-new-product">
         <Modal isOpen = {isOpenModalCart} closeModal = {closeModalCart}>
+        <div>
         <button className="btn-vaciar" onClick={() => vaciar()}>Vaciar</button>
+        {/* <button className="btn-vaciar" onClick = {() => orderToModify(urlOrderId)}>Orden por modificar</button> */}
+        </div>
           <h2>Carrito</h2>
           <div>
             <p>Mesero Id</p>
-            <input type = 'text' onChange = {(e) => setUserId(e.target.value)}></input>
+            <input id = 'inputMesero' type = 'text' onChange = {(e) => setUserId(e.target.value)}></input>
         </div>
         <div>
             <p>Cliente</p>
-            <input type = 'text' onChange = {(e) => setClient(e.target.value)}></input>
+            <input id = 'inputClient' type = 'text' onChange = {(e) => setClient(e.target.value)}></input>
         </div>
           <table>
           <thead>
@@ -139,7 +179,7 @@ const Cart = (props) => {
           }): <p>Loading...</p> }
         </table>
         <div className="total-price"><strong>{`Total: `}</strong> S/ {parseFloat(total.toFixed(2))}</div>
-        <button type = 'submit' className = 'btn-delete-product' onClick = {sendOrder}>Enviar orden</button>
+        <button type = 'submit' className = 'btn-delete-product' onClick = {sendAndClose}>Enviar orden</button>
         </Modal>
       </div>
     </>
