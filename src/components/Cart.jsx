@@ -26,7 +26,7 @@ const Cart = (props) => {
   const urlOrdersFetch = 'https://lim015-burger-queen-api.herokuapp.com/orders';
 
   const sendOrder = async () => {
-    setProducts(productsOnCart.map((prod) => {
+    setProducts([...new Set(productsOnCart)].map((prod) => {
     const objectProduct = {
       qty: counts[prod._id],
       productId: prod._id
@@ -111,10 +111,6 @@ const Cart = (props) => {
             <p>Cliente</p>
             <input type = 'text' onChange = {(e) => setClient(e.target.value)}></input>
         </div>
-        {/* <div>
-            <p>Estado</p>
-            <span>estado</span>
-        </div> */}
           <table>
           <thead>
             <tr className = 'products-order-header'>
