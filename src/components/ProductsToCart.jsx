@@ -35,15 +35,13 @@ const ProductsToCart = ({product, data}) => {
               <div className = 'name-product-cart'>{product.name}</div>
               <div className = 'price-product-cart'>S/.{product.price}</div>
               
-              <button className = 'button-product-cart' onClick={handleClickAgregar}>Agregar <MdAddCircleOutline/></button>
-              
-              {/* {
+              {
                flag ? (
                   <button className = 'button-product-cart' onClick={handleClickAgregar}>Agregar <MdAddCircleOutline/></button>
                 ) : (
                   <button className = 'button-product-cart danger' onClick={handleClickRemover}>Eliminar</button>
                   )
-              } */}
+              }
             </div>
         }
     </div>

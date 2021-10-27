@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "./Modal";
-import { MdOutlineShoppingCart, MdCancel } from "react-icons/md";
+import { MdOutlineShoppingCart, MdCancel, MdAddCircle, MdRemoveCircle } from "react-icons/md";
 // import { Link, useRouteMatch } from "react-router-dom";
 import { useModal } from "../hooks/useModal";
-import { useEffect } from "react/cjs/react.development";
+// import { useEffect } from "react/cjs/react.development";
 // import { useEffect } from "react/cjs/react.development";
 
 const Cart = (props) => {
@@ -15,9 +15,9 @@ const Cart = (props) => {
 
   // let { url } = useRouteMatch();
   // const { handleRemove,handleVaciar,productsOnCart } = props.data;
-  const { handleRemove,handleVaciar,productsOnCart } = props;
+  const { handleRemove, handleVaciar, productsOnCart, handleAddition } = props;
   const [counts, setCounts] = useState({});
-
+  // console.log(counts);
   const [userId, setUserId] = useState();
   const [client, setClient] = useState();
   const [products, setProducts] = useState([]);
@@ -28,7 +28,7 @@ const Cart = (props) => {
   const sendOrder = async () => {
     setProducts(productsOnCart.map((prod) => {
     const objectProduct = {
-      qty: 1,
+      qty: counts[prod._id],
       productId: prod._id
     }
     return objectProduct;
@@ -56,24 +56,25 @@ const Cart = (props) => {
 
   useEffect(() => {
     checkProductsQTY();
-  }, [productsOnCart]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[productsOnCart]);
 
-  const remover = (product) => {
+  const removerOne = (product) => {
     productsOnCart.splice(productsOnCart.indexOf(product), 1);
     checkProductsQTY();
 
     if (!(counts[product._id])) {
       handleRemove(product);
     }
-  }
+  };
 
-  // const remover = (product) => {
-  //   handleRemove(product);
-  // }
+  const remover = (product) => {
+    handleRemove(product);
+  };
 
   const vaciar = () => {
     handleVaciar();
-  }
+  };
 
   const [isOpenModalCart, openModalCart, closeModalCart] = useModal(false);
   // console.log('total productos:',productsOnCart.length);
@@ -86,6 +87,10 @@ const Cart = (props) => {
       cont[product._id] = cont[product._id] ? cont[product._id] + 1 : 1;
     }
     setCounts(cont);
+  };
+
+  const addOne = (product) => {
+    handleAddition(product);
   };
 
   return (
@@ -126,7 +131,11 @@ const Cart = (props) => {
               <tr  className = 'products-order-body'>
                 <td className = 'products-order-name'>{product.name}</td>
                 <td>{product.price}</td>
-                <td>{counts[product._id]}</td>
+                <td className = 'products-order-count'>
+                <button onClick={() => removerOne(product)} className = 'btn-add-remove'><MdRemoveCircle/></button>
+                  {counts[product._id]}
+                  <button onClick={() => addOne(product)} className = 'btn-add-remove'><MdAddCircle/></button>
+                  </td>
                 <td><button className="boton-eliminar-item" onClick={() => remover(product)}><MdCancel/></button></td>
               </tr>
               </tbody>

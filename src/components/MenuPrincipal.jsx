@@ -34,7 +34,7 @@ const MenuPrincipal = () => {
         <li className = 'link-personal-area'>
           <Link to={`/home/orders`}>Mi área personal</Link>
         </li>
-        <Cart productsOnCart={itemList} handleRemove={handleRemove} handleVaciar={handleVaciar}/>
+        <Cart productsOnCart={itemList} handleRemove={handleRemove} handleVaciar={handleVaciar} handleAddition = {handleAddition}/>
       </div>
     </nav>
     <div className = 'views-menu'>

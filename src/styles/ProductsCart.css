@@ -61,3 +61,15 @@
 .danger {
   background-color: rgba(226, 104,23, 0.6);
 }
+.btn-add-remove {
+  background-color: transparent;
+  border: none;
+  margin: 3px 6px;
+}
+.btn-add-remove path {
+  color: rgba(224, 152, 35, 1);
+}
+.products-order-count {
+  display: flex;
+  justify-content: center;
+}
