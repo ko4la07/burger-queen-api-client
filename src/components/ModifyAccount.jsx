@@ -76,7 +76,7 @@ const ModifyAccount = () => {
         <button type = 'submit' onClick = {putUser} className = 'btn-create-product'>Enviar y modificar.</button>
         <div className = 'message-error-auth'>
           <ToastContainer toastStyle={{ backgroundColor: 'rgba(45, 45, 48, 1)', padding: '15px', fontSize: '16px', color: 'white',}} />
-          </div>
+        </div>
     </div>
     </>
   )

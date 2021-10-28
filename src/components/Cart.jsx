@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Modal from "./Modal";
 import { MdOutlineShoppingCart, MdCancel, MdAddCircle, MdRemoveCircle } from "react-icons/md";
-// import { Link, useRouteMatch } from "react-router-dom";
 import { useModal } from "../hooks/useModal";
-// import { useEffect } from "react/cjs/react.development";
-// import { useEffect } from "react/cjs/react.development";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Cart = (props) => {
   function getToken() {
@@ -13,31 +12,27 @@ const Cart = (props) => {
   };
   const token = getToken();
 
-  // let { url } = useRouteMatch();
-  // const { handleRemove,handleVaciar,productsOnCart } = props.data;
   const { handleRemove, handleVaciar, productsOnCart, handleAddition } = props;
   const [counts, setCounts] = useState({});
   // console.log(productsOnCart);
   const [userId, setUserId] = useState();
   const [client, setClient] = useState();
-  const [products, setProducts] = useState([]);
   
   // const urlOrders = 'https://lim015-burger-queen-api.herokuapp.com/orders?limit=1000';
   const urlOrdersFetch = 'https://lim015-burger-queen-api.herokuapp.com/orders';
 
-  const sendOrder = async () => {
-    setProducts([...new Set(productsOnCart)].map((prod) => {
-    const objectProduct = {
-      qty: counts[prod._id],
-      productId: prod._id
-    }
-    return objectProduct;
-  }));
-  // setProductsOrder(productsToOrder);
-  console.log(products);
+    const products = [...new Set(productsOnCart)].map((prod) => {
+      const objectProduct = {
+        qty: counts[prod._id],
+        productId: prod._id
+      }
+      return objectProduct;
+    });
+    // console.log(products);
 
+  const sendOrder = () => {
     const orderToSend = { userId, client, products};
-    console.log(orderToSend);
+    // console.log(orderToSend);
 
     fetch(urlOrdersFetch, {
       method :'POST',
@@ -49,8 +44,10 @@ const Cart = (props) => {
       body: JSON.stringify(orderToSend)
       })
       .then(response => response.json())
-      .then((data) => console.log(data))
-      // .then(() => fetchProducts(urlOrders)) 
+      // .then((data) => console.log(data))
+      .then(() => {
+        notifySuccess('The order was sent successfully ');
+      }) 
       .catch((error) => console.log(error));
   };
 
@@ -93,6 +90,16 @@ const Cart = (props) => {
     handleAddition(product);
   };
 
+  const notifySuccess = (message) => toast.success(message, {
+    position: "bottom-center",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    });
+
   // --------
   // const orderId = localStorage.getItem('orderId');
   // const urlOrderId = `https://lim015-burger-queen-api.herokuapp.com/orders/${orderId}`;
@@ -125,9 +132,9 @@ const Cart = (props) => {
   const sendAndClose = () => {
     sendOrder();
     closeModalCart();
-    // vaciar();
-    // document.querySelector('#inputMesero').value = '';
-    // document.querySelector('#inputClient').value = '';
+    vaciar();
+    document.querySelector('#inputMesero').value = '';
+    document.querySelector('#inputClient').value = '';
   };
 
   return (
@@ -181,6 +188,9 @@ const Cart = (props) => {
         <div className="total-price"><strong>{`Total: `}</strong> S/ {parseFloat(total.toFixed(2))}</div>
         <button type = 'submit' className = 'btn-delete-product' onClick = {sendAndClose}>Enviar orden</button>
         </Modal>
+      </div>
+      <div className = 'message-error-auth'>
+          <ToastContainer toastStyle={{ backgroundColor: 'rgba(45, 45, 48, 1)', padding: '15px', fontSize: '16px', color: 'white',}} />
       </div>
     </>
   )

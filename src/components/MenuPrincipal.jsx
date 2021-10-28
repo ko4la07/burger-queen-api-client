@@ -13,6 +13,7 @@ import Cart from './Cart.jsx';
 const MenuPrincipal = () => {
   const { url } = useRouteMatch();
   const [itemList, setItemList] = useState([]);
+  // console.log(itemList);
 
   const handleAddition = (item) => {
     setItemList([...itemList, item]);
