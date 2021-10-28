@@ -50,6 +50,7 @@ const OrderUser = ({order, fetchOrders}) => {
           <div className = 'container-btns-order'>
           <LookOrder idOrder = {order._id}/>
           <select name ="roles" onChange={(e) => setStatus(e.target.value)} className = 'select-status-order-user'>
+          <option defaultValue>status</option>
           <option value={'delivered'}>delivered</option>
           <option value={'canceled'}>canceled</option>
         </select>

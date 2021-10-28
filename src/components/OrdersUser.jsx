@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import '../styles/Orders.css';
 import OrderUser from "./OrderUser";
+import Order from "./Order";
 import ReturnButton from "./ReturnButton";
 
 const OrdersUser = ({userId}) => {
@@ -32,18 +33,50 @@ const OrdersUser = ({userId}) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[urlOrders])
   // console.log(userId);
-  const ordersToPrepare = (array) => {
-    const arrayPrepare = array.filter((element) => (element.status !== 'pending' && element.status !== 'preparing') && element.userId === userId);
+  const ordersToDelivering = (array) => {
+    const arrayPrepare = array.filter((element) => (element.status !== 'pending' && element.status !== 'preparing' && element.status !== 'delivered' && element.status !== 'canceled') && element.userId === userId);
+    return arrayPrepare;
+  };
+  const allOrderPending = (array) => {
+    const arrayPrepare = array.filter((element) => (element.status === 'pending' && element.userId === userId));
+    return arrayPrepare;
+  };
+  const allOrderPreparing = (array) => {
+    const arrayPrepare = array.filter((element) => (element.status === 'preparing' && element.userId === userId));
     return arrayPrepare;
   };
   
   return (
     <div className = 'container-products'>
       <ReturnButton/>
-      <h2>Orders</h2>
+      <h2>Ordenes listas para servir</h2>
       <div className = 'container-orders-chef'>
       {
-        ordersToPrepare(orders).map((order) => {
+        ordersToDelivering(orders).map((order) => {
+          return (
+            <div className = 'products-cart-box' key = {order._id}>
+              <OrderUser order = {order} fetchOrders = {fetchOrders}/>
+            </div>
+          )
+        })
+      }
+      </div>
+      <h2>Ordenes preparando en cocina</h2>
+      <div className = 'container-orders-chef'>
+      {
+        allOrderPreparing(orders).map((order) => {
+          return (
+            <div className = 'products-cart-box' key = {order._id}>
+              <Order order = {order} fetchOrders = {fetchOrders}/>
+            </div>
+          )
+        })
+      }
+      </div>
+      <h2>Ordenes pendientes</h2>
+      <div className = 'container-orders-chef'>
+      {
+        allOrderPending(orders).map((order) => {
           return (
             <div className = 'products-cart-box' key = {order._id}>
               <OrderUser order = {order} fetchOrders = {fetchOrders}/>

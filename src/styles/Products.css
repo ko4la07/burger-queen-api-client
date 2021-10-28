@@ -121,3 +121,8 @@ table {
   height: 28px;
   background-color: rgba(76, 76, 81, 1);
 }
+.container-table {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}

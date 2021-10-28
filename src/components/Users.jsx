@@ -34,7 +34,7 @@ const Users = () => {
   return (
     <div className = 'container-products'>
       <CreateUser fetchUsers = {fetchUsers} />
-      <div>
+      <div className = 'container-table'>
       <UsersTable users = {users} fetchUsers = {fetchUsers}/>
       </div>
     </div>

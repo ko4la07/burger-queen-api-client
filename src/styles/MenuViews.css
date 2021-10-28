@@ -62,6 +62,7 @@
   display: grid;
   grid-template-columns: 3.5fr 1.5fr;
   margin: 10px 30px 20px 0px;
+  width: 100vh;
 }
 .container-header-menu-views h2 {
   font-weight: 300;
@@ -72,6 +73,8 @@
   color: white;
   display: flex;
   justify-content: flex-end;
+  position: absolute;
+  right: 15px;
 }
 .container-header-menu-views a:hover {
   color: rgba(224, 152, 35, 1);
