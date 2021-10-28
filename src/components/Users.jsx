@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import UsersTable from './UsersTable'
-import '../styles/Users.css';
 import CreateUser from "./CreateUser";
 
 const Users = () => {

@@ -7,13 +7,13 @@ import {
   useRouteMatch
 } from "react-router-dom";
 // import Products from './Products.jsx';
-import Orders from './Orders.jsx';
+import OrdersUser from './OrdersUser.jsx';
 // import Users from './Users.jsx';
 import Logout from './Logout.jsx';
 import '../styles/MenuViews.css';
 import ModifyAccount from './ModifyAccount.jsx';
 
-const UserView = () => {
+const UserView = ({userId}) => {
   let { url } = useRouteMatch();
   return (
     <div className = 'views-menu'>
@@ -34,7 +34,7 @@ const UserView = () => {
       <div className = 'line-mobile-menu'></div>
       <Switch>
         <Route path={`${url}/orders`}>
-          <div><Orders /></div>
+          <div><OrdersUser userId = {userId} /></div>
         </Route>
         <Route path={`${url}/account`}>
           <div><ModifyAccount /></div>

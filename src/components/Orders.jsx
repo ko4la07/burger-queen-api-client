@@ -36,7 +36,17 @@ const Orders = () => {
     <div className = 'container-products'>
       <ReturnButton/>
       <h2>Orders</h2>
-      <Order orders = {orders}/>
+      <div className = 'container-orders-chef'>
+      {
+        orders.map((order) => {
+          return (
+            <div className = 'products-cart-box' key = {order._id}>
+              <Order order = {order} fetchOrders = {fetchOrders}/>
+            </div>
+          )
+        })
+      }
+      </div>
     </div>
   )
 }

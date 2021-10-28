@@ -103,3 +103,21 @@ table {
   background-color: rgba(224, 152, 35, 1);
 
 }
+.select-roles {
+  background-color: rgba(76, 76, 81, 1);
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  height: 28px;
+  display: flex;
+  padding: 0px 10px;
+  justify-content: flex-end;
+  color: white;
+  border: 1px solid rgba(224, 152, 35, 1);
+}
+.filter-global input {
+  border: 1px solid rgba(224, 152, 35, 1);
+  border-radius: 10px;
+  height: 28px;
+  background-color: rgba(76, 76, 81, 1);
+}

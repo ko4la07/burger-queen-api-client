@@ -1,7 +1,7 @@
 import React from 'react';
 import Auth from './Auth';
 // import MenuViews from './MenuViews';
-import '../styles/Home.css';
+// import '../styles/Home.css';
 import MenuByUserType from './MenuByUserType';
 
 const Home = () => {

@@ -12,6 +12,7 @@ const MenuByUserType = () => {
   const token = getToken();
 
   const [userRole, setUserRole] = useState();
+  const [userId, setUserId] = useState();
 
   const email = localStorage.getItem('email');
   // console.log(email);
@@ -20,10 +21,6 @@ const MenuByUserType = () => {
 
   
   const loginType = () => {
-
-    // const orderToSend = { userId, client, products};
-    // console.log(orderToSend);
-
     fetch(urlUserEmail, {
       method :'GET',
       headers : {
@@ -31,19 +28,19 @@ const MenuByUserType = () => {
         'Accept': 'application/json',
         "Authorization" : `Bearer ${token}`,
       },
-      // body: JSON.stringify(orderToSend)
       })
       .then(response => response.json())
       .then((data) => {
         // console.log(data);
-        setUserRole(data.roles[0])
+        setUserRole(data.roles[0]);
+        setUserId(data._id)
       })
       // .then(() => fetchProducts(urlOrders)) 
       .catch((error) => console.log(error));
   };
   loginType();
 
-  // console.log(userRole);
+  // console.log(userId);
 
   const roleType = () => {
     switch (userRole) {
@@ -53,7 +50,7 @@ const MenuByUserType = () => {
         );
       case "615a747f726d6d07d7eae7a5":
         return (
-          <UserView/>
+          <UserView userId = {userId}/>
         );
       case "6170ed4ac2fa424eb5cb9351":
         return (

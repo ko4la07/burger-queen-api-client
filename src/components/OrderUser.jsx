@@ -1,6 +1,7 @@
-import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect } from 'react';
+import LookOrder from './LookOrder';
 
-const OrderChef = ({order, fetchOrders}) => {
+const OrderUser = ({order, fetchOrders}) => {
   function getToken() {
     const token = JSON.parse(localStorage.getItem('token'))['token'];
     return token;
@@ -34,11 +35,10 @@ const OrderChef = ({order, fetchOrders}) => {
     updateStatus();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[status]);
-
   return (
-    <div>
+    <div className = 'products-cart-box'>
       {
-        <div key = {order._id} className = 'one-order-box-chef'>
+        <div key = {order._id} className = 'one-order-box'>
           <div className = 'one-order-rows'>
             <p className = 'rows-name'>Cliente</p>
             <p>{order.client}</p>
@@ -47,39 +47,17 @@ const OrderChef = ({order, fetchOrders}) => {
             <p className = 'rows-name'>Estado</p>
             <p>{order.status}</p>
           </div>
-          <div>
-          <table>
-            <thead>
-              <tr className = 'products-order-header'>
-                <th>Producto</th>
-                <th>Cantidad</th>
-              </tr>
-            </thead>
-            {
-              order.products ? (order.products).map((product) => {
-                  return(
-                    <tbody key = {product._id}>
-                      <tr  className = 'products-order-body'>
-                        <td className = 'products-order-name'>{product.product["name"]}</td>
-                        <td className = 'products-order-qty'>{product.qty}</td>
-                      </tr>
-                    </tbody>
-                  )
-                }):null
-              }
-          </table>
-          </div>
-          <div>
-            <select name ="roles" onChange={(e) => setStatus(e.target.value)} defaultValue = {order.status} className = 'select-status'>
-              <option value={'pending'}>pending</option>
-              <option value={'preparing'}>preparing</option>
-              <option value={'delivering'}>delivering</option>
-            </select>
+          <div className = 'container-btns-order'>
+          <LookOrder idOrder = {order._id}/>
+          <select name ="roles" onChange={(e) => setStatus(e.target.value)} className = 'select-status-order-user'>
+          <option value={'delivered'}>delivered</option>
+          <option value={'canceled'}>canceled</option>
+        </select>
           </div>
         </div>
-      }
+        }
     </div>
   )
 };
 
-export default OrderChef;
+export default OrderUser;

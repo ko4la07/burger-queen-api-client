@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { useAsyncDebounce } from "react-table";
-import '../styles/GlobalFilter.css';
+// import '../styles/GlobalFilter.css';
  
 // Component for Global Filter
 const GlobalFilter = ({ 

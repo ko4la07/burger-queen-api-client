@@ -82,3 +82,11 @@
 .hide {
   display: none;
 }
+.principal-menu {
+  background-color: rgba(76, 76, 81, 1);
+  padding: 80px 30px 40px;
+  border-radius: 10px;
+  width: 240px;
+  font-size: 20px;
+  color: white;
+}

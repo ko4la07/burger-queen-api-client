@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import '../styles/Orders.css';
-import OrderChef from "./OrderChef";
+import OrderUser from "./OrderUser";
 import ReturnButton from "./ReturnButton";
 
-const OrdersChef = () => {
+const OrdersUser = ({userId}) => {
   function getToken() {
     const token = JSON.parse(localStorage.getItem('token'))['token'];
     return token;
@@ -31,22 +31,22 @@ const OrdersChef = () => {
       fetchOrders(urlOrders);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[urlOrders])
-
+  // console.log(userId);
   const ordersToPrepare = (array) => {
-    const arrayPrepare = array.filter((element) => (element.status !== 'delivered' && element.status !== 'canceled'));
+    const arrayPrepare = array.filter((element) => (element.status !== 'pending' && element.status !== 'preparing') && element.userId === userId);
     return arrayPrepare;
   };
   
   return (
-    <div>
+    <div className = 'container-products'>
       <ReturnButton/>
-      <h2>Orders to Chef</h2>
+      <h2>Orders</h2>
       <div className = 'container-orders-chef'>
       {
         ordersToPrepare(orders).map((order) => {
           return (
             <div className = 'products-cart-box' key = {order._id}>
-              <OrderChef order = {order} fetchOrders = {fetchOrders}/>
+              <OrderUser order = {order} fetchOrders = {fetchOrders}/>
             </div>
           )
         })
@@ -56,4 +56,4 @@ const OrdersChef = () => {
   )
 }
 
-export default OrdersChef;
+export default OrdersUser;

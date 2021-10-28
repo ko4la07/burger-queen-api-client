@@ -6,7 +6,6 @@ import {
   useRouteMatch
 } from "react-router-dom";
 import Logout from './Logout.jsx';
-import '../styles/MenuPrincipal.css';
 import ProductsCart from "./ProductsCart";
 import Cart from './Cart.jsx';
 
